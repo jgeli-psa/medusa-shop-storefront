@@ -5,10 +5,12 @@ import { retrieveCustomer } from "@lib/data/customer"
 import { getBaseURL } from "@lib/util/env"
 import { StoreCartShippingOption } from "@medusajs/types"
 import CartMismatchBanner from "@modules/layout/components/cart-mismatch-banner"
-import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
-import Header from "@modules/layout/templates/header"
+import Header from "@/components/Header"
+import QuickViewModal from "@/components/Common/QuickViewModal";
+import CartSidebarModal from "@/components/Common/CartSidebarModal";
+import PreviewSliderModal from "@/components/Common/PreviewSlider";
+import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -27,17 +29,10 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* <Nav />  */}
-      
-          <div className="min-h-screen bg-gray-100">
+       <div className="min-h-screen bg-gray-100">
       <Header />
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        {props.children}
-      </main>
-      <footer className="text-center py-8 text-sm text-gray-500">© {new Date().getFullYear()} My Store</footer>
-    </div>
-      
-      {customer && cart && (
+      <main className="max-w-7xl mx-auto relative" >
+        {customer && cart && (
         <CartMismatchBanner customer={customer} cart={cart} />
       )}
 
@@ -48,8 +43,15 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
           shippingOptions={shippingOptions}
         />
       )}
-      {props.children}
-      <Footer />
+        {props.children}
+      </main>
+      <Footer/>
+    </div>
+      
+                    <QuickViewModal />
+                    <CartSidebarModal cart={cart}/>
+                    <PreviewSliderModal />    
+
     </>
   )
 }

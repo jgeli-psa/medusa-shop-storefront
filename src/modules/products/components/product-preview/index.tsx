@@ -28,6 +28,9 @@ export default async function ProductPreview({
     product,
   })
 
+
+
+
   return (
     <LocalizedClientLink href={`/products/${product.handle}`} className="group">
       <div data-testid="product-wrapper">

@@ -6,6 +6,8 @@ import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
+import { formatProducts } from "@lib/formatters/product-formatter"
+import { retrieveCustomer, retrieveCustomerById } from "./customer"
 
 export const listProducts = async ({
   pageParam = 1,
@@ -52,6 +54,44 @@ export const listProducts = async ({
   const next = {
     ...(await getCacheOptions("products")),
   }
+  
+  
+   // Build query parameters
+  const query: Record<string, any> = {
+    limit,
+    offset,
+    region_id: region?.id,
+    // Always include these fields for proper product display
+    fields: "*variants.calculated_price,+variants.inventory_quantity,*variants.images,*variants.prices,+metadata,+tags,*categories,*collections"
+  }
+
+  // Add search query if provided
+  if (queryParams?.q) {
+    query.q = queryParams.q
+  }
+
+  // Add sorting if provided
+  if (queryParams?.order) {
+    query.order = queryParams.order
+  }
+
+  // Add filters if provided
+  if (queryParams?.category_id) {
+    query.category_id = queryParams.category_id
+  }
+  if (queryParams?.collection_id) {
+    query.collection_id = queryParams.collection_id
+  }
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   return sdk.client
     .fetch<{ products: HttpTypes.StoreProduct[]; count: number }>(
@@ -63,7 +103,7 @@ export const listProducts = async ({
           offset,
           region_id: region?.id,
           fields:
-            "*variants.calculated_price,+variants.inventory_quantity,*variants.images,+metadata,+tags,",
+            "*variants.calculated_price,+variants.inventory_quantity,*variants.images,*variants.prices,+metadata,+tags,*categories",
           ...queryParams,
         },
         headers,
@@ -100,7 +140,7 @@ export const listProductsWithSort = async ({
   sortBy?: SortOptions
   countryCode: string
 }): Promise<{
-  response: { products: HttpTypes.StoreProduct[]; count: number }
+  response: { products: HttpTypes.StoreProduct[] | any; count: number }
   nextPage: number | null
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
 }> => {
@@ -116,6 +156,11 @@ export const listProductsWithSort = async ({
     },
     countryCode,
   })
+  
+  
+  const customer = await retrieveCustomer();
+  const customerData = await retrieveCustomerById(customer?.id);
+  
 
   const sortedProducts = sortProducts(products, sortBy)
 
@@ -124,10 +169,10 @@ export const listProductsWithSort = async ({
   const nextPage = count > pageParam + limit ? pageParam + limit : null
 
   const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
-
+  
   return {
     response: {
-      products: paginatedProducts,
+      products: formatProducts(paginatedProducts, customerData),
       count,
     },
     nextPage,

@@ -22,6 +22,7 @@ const CartDropdown = ({
 }: {
   cart?: HttpTypes.StoreCart | null
 }) => {
+
   const [activeTimer, setActiveTimer] = useState<NodeJS.Timer | undefined>(
     undefined
   )
@@ -72,6 +73,9 @@ const CartDropdown = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalItems, itemRef.current])
+
+
+
 
   return (
     <div
@@ -178,7 +182,7 @@ const CartDropdown = ({
                   <div className="flex items-center justify-between">
                     <span className="text-ui-fg-base font-semibold">
                       Subtotal{" "}
-                      <span className="font-normal">(excl. taxes)</span>
+                      <span className="font-normal">(incl. tax)</span>
                     </span>
                     <span
                       className="text-large-semi"

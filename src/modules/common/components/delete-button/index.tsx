@@ -18,6 +18,8 @@ const DeleteButton = ({
     setIsDeleting(true)
     await deleteLineItem(id).catch((err) => {
       setIsDeleting(false)
+    }).finally(() => {
+      setIsDeleting(false)
     })
   }
 

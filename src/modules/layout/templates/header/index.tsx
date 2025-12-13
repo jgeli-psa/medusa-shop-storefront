@@ -5,8 +5,14 @@ import SearchBar from "./searchBar";
 import LOGO from './psa-logo.png';
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
+import { retrieveStore } from "@lib/data/store"
 
-export default function Header() {
+
+
+export default async function Header() {
+
+let storeData = await retrieveStore().catch(() => null);
+
   return (
     <header className="bg-white">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-6 px-6">

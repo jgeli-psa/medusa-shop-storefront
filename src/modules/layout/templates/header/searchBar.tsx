@@ -1,18 +1,31 @@
-'use client'
+"use client"
 
-// components/SearchBar.tsx
-import { useState } from "react";
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+
 export default function SearchBar() {
-  const [q, setQ] = useState("");
+  const router = useRouter()
+  const [query, setQuery] = useState("")
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    router.push(`/shop?s=${query}`)
+  }
+
   return (
-    <form className="flex" onSubmit={(e)=>e.preventDefault()}>
-      <input
-        value={q}
-        onChange={(e)=>setQ(e.target.value)}
-        placeholder="What are you looking for?"
-        className="w-full py-2 px-3 text-sm rounded-l border-0"
-      />
-      <button className="bg-white text-gray-700 px-3 rounded-r" aria-label="Search">🔍</button>
+    <form onSubmit={handleSubmit} className="product-search-form">
+      <div className="product-search">
+        <input
+          type="search"
+          className="product-search-field"
+          placeholder="What are you looking for?"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit" className="product-search-submit">
+          <span className="dashicons dashicons-search" />
+        </button>
+      </div>
     </form>
-  );
+  )
 }

@@ -4,6 +4,8 @@ import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
+import BlogDetailsWithSidebar from "@/components/BlogDetailsWithSidebar"
+import { retrieveCustomer } from "@lib/data/customer"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -88,10 +90,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.title} | Medusa Store`,
+    title: `${product.title} | PSA Store`,
     description: `${product.title}`,
     openGraph: {
-      title: `${product.title} | Medusa Store`,
+      title: `${product.title} | PSA Store`,
       description: `${product.title}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
@@ -101,6 +103,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function ProductPage(props: Props) {
   const params = await props.params
   const region = await getRegion(params.countryCode)
+
   const searchParams = await props.searchParams
 
   const selectedVariantId = searchParams.v_id
@@ -121,11 +124,19 @@ export default async function ProductPage(props: Props) {
   }
 
   return (
-    <ProductTemplate
+  <>
+      <BlogDetailsWithSidebar
       product={pricedProduct}
       region={region}
       countryCode={params.countryCode}
       images={images}
-    />
+      />
+    {/* <ProductTemplate
+      product={pricedProduct}
+      region={region}
+      countryCode={params.countryCode}
+      images={images}
+    /> */}
+    </>
   )
 }

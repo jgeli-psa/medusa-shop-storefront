@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation"
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
+  customer?: any
   disabled?: boolean
 }
 
@@ -31,6 +32,7 @@ const optionsAsKeymap = (
 export default function ProductActions({
   product,
   disabled,
+  customer
 }: ProductActionsProps) {
   const router = useRouter()
   const pathname = usePathname()
@@ -39,6 +41,9 @@ export default function ProductActions({
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
+console.log(customer, 'cuss')
+let membership = customer?.membership ?? 'nonmember'
+
 
   // If there is only 1 variant, preselect the options
   useEffect(() => {
@@ -131,13 +136,14 @@ export default function ProductActions({
       quantity: 1,
       countryCode,
     })
-
+    
+    
+    
     setIsAdding(false)
   }
 
   return (
-    <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div className="flex flex-col w-full justify-center" ref={actionsRef}>
         <div>
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
@@ -160,7 +166,7 @@ export default function ProductActions({
           )}
         </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
+         <ProductPrice product={product} variant={selectedVariant} membership={membership}/> 
 
         <Button
           onClick={handleAddToCart}
@@ -194,6 +200,5 @@ export default function ProductActions({
           optionsDisabled={!!disabled || isAdding}
         />
       </div>
-    </>
   )
 }

@@ -1,0 +1,1807 @@
+[
+  {
+    "external_id": "01tGB00000DEazHYAT",
+    "title": "AMH Aged Care Companion 2024",
+    "category": "Drug References",
+    "weight": 0.48,
+    "description": "The AMH Aged Care Companion is a trusted, practical reference for doctors, nurses and pharmacists who work with older people.\n\nThe AMH Aged Care Companion contains the latest evidence-based information on the management of more than 70 conditions common in older people, including dementia and its behavioural symptoms, delirium, cardiovascular diseases, fall prevention, osteoporosis, COPD, insomnia, depression and wound management. It also contains general principles on the use of medicines in older people, including deprescribing. Topics emphasise issues relevant to older people using medicines and, where appropriate, also include advice about non-drug treatments.\n\nThe print edition is a spiral-bound pocketbook, published with updated content every 2 years (in April).",
+    "additionalNotes": null,
+    "publishFormat": "Paperback",
+    "handle": "amh-aged-care-companion-2024",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "AACC24",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 10909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 11364,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 11364,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01tGB00000DEazHYAT"
+    }
+  },
+  {
+    "external_id": "01t0o00000CnyzqAAB",
+    "title": "AMH Children's Dosing Companion 2023/24",
+    "category": "Drug References",
+    "weight": 0.35,
+    "description": "The AMH Children’s Dosing Companion is Australia's national independent dosing guide for prescribing and administering medicines to children from birth to 18 years.\n\nThe evidence-based and peer-reviewed content provides detailed dosing information to assist health care practitioners in hospital and community settings. Clearly written and concisely laid-out, it offers:\n•\tdetailed dosing information for over 400 drugs \n•\tdrug monographs for over 90% of PBS paediatric prescribing in Australia \n•\tdetailed dosages by indications and by age groupings \n•\toff-label uses\n•\tpractical tips and other hard-to-find data on paediatric prescribing.\n\nView a sample AMH Children’s Dosing Companion monograph.",
+    "additionalNotes": "This is the latest addition of the AMH CDC 2023 book  and will replace AMH CDC 2022.\nPlease deactivate the AMH CDC 22 book.",
+    "publishFormat": "Spiral bound paperback book",
+    "handle": "amh-children-s-dosing-companion-2023-24",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "ACDC23",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 13091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 13091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 14091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 14091,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000CnyzqAAB"
+    }
+  },
+  {
+    "external_id": "01tRF00000FhqynYAB",
+    "title": "AMH Children's Dosing Companion 2025/26",
+    "category": "Drug References",
+    "weight": 0.35,
+    "description": "The AMH Children’s Dosing Companion is Australia's national independent dosing guide for prescribing and administering medicines to children from birth to 18 years.\r\n\r\nThe evidence-based and peer-reviewed content provides detailed dosing information to assist health care practitioners in hospital and community settings. Clearly written and concisely laid-out, it offers:\r\n•\tdetailed dosing information for over 400 drugs \r\n•\tdrug monographs for over 90% of PBS paediatric prescribing in Australia \r\n•\tdetailed dosages by indications and by age groupings \r\n•\toff-label uses\r\n•\tpractical tips and other hard-to-find data on paediatric prescribing.",
+    "additionalNotes": null,
+    "publishFormat": "Spiral bound paperback book",
+    "handle": "amh-children-s-dosing-companion-2025-26",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "ACDC25",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 14091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 14091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 15455,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 15455,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01tRF00000FhqynYAB"
+    }
+  },
+  {
+    "external_id": "01t0o00000BFLegAAH",
+    "title": "AMH: Australian Medicines Handbook 2023",
+    "category": "Drug References",
+    "weight": null,
+    "description": "AS an independent, evidence-based, national drug reference, the Australian Medicines Handbook (AMH) is an important clinical resource for health practitioners concerned with the quality use of medicines. The comparative drug information makes it unique among drug reference tools on the market, as it allows users to compare drugs and make informed prescribing choices. Therapeutic information documents clearly summarise evidence and clinical practice for some diseases to give context for drug treatment. Class statements provide common and comparative information on drugs of the same class or family. Substantial drug interactions section contains useful advice for clinicians on managing specific interactions. Individual drug monographs with succinct descriptions of mode of action, indications and precautions, adverse effects, brand names and products, PBS information and off-label uses, patient counselling and practice points, among other things.\nPlease note:\n1.\tPSA Students members are only allowed to purchase one book per year at the discounted price",
+    "additionalNotes": null,
+    "publishFormat": "Paperback",
+    "handle": "amh-australian-medicines-handbook-2023",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "AMH23",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 21909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 26273,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 27273,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 27273,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BFLegAAH"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTEUJAA5",
+    "title": "APF Digital Single User Licence (12-month subscription)",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "APF Digital Single User Licence (12-month subscription)\nStay on top of your clinical game with this mandatory and essential resource of best practice. APF Digital provides easy access to essential information you need for reviewing, dispensing, counselling or providing clinical assessments.\n\nAPF Digital content is contemporary and updated every month. Always have the latest CAL recommendations (updated every month), new chapters and updated content as soon as they are published. Access to APF Digital also includes exclusive APF Digital-only chapters:\n•\tEvidence-based medicine\n•\tBiosimilar medicines\n•\tOpioid-induced constipation\n•\tOpioid substitution therapy\n•\tIndividualised medicine\n•\tMedicines and diet\n•\tMedicines in older people\n•\tExclusion periods for infectious conditions\n•\tMedical and surgical emergencies\n•\tPoisoning\n\nWith easy access from any device, anywhere, any time (internet connection required), this single user licence is perfect for individual pharmacists or pharmacy students. With search and bookmarking features, you can find the answers you need in just a few clicks. \n\nPlease note that only one purchase per customer is allowed. \n\nThe APF Digital Single User Licence provides individual pharmacists with a 12-month subscription to APF Digital (with annual renewal) (online). Please note that APF Digital cannot be downloaded. \nBy purchasing APF Digital, you are agreeing to the terms and conditions of the APF digital licence: https://www.psa.org.au/media-publications/australian-pharmaceutical-formulary/",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "apf-digital-single-user-licence-12-month-subscription",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APFDIGSING",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 16095,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 16095,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 22924,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 22924,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTEUJAA5"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTEUOAA5",
+    "title": "APF Digital Site Licence",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "Keep your staff's advice and knowledge current with this mandatory and essential resource of best practice. APF Digital provides easy access to essential information your staff need for reviewing, dispensing, counselling or providing clinical assessments or advice.  \n\nAPF Digital content is contemporary and updated every month. Always access the latest CAL recommendations (updated every month), new chapters and updated content as soon as they are published. Access to APF Digital also includes exclusive APF Digital-only chapters:\n•\tEvidence-based medicine\n•\tBiosimilar medicines\n•\tOpioid-induced constipation\n•\tOpioid substitution therapy\n•\tIndividualised medicine\n•\tMedicines and diet\n•\tMedicines in older people\n•\tExclusion periods for infectious conditions\n•\tMedical and surgical emergencies\n•\tPoisoning\n\nYou can access APF Digital from any device, anywhere, any time (internet connection required). With search and bookmarking features you can find the answers you need in just a few clicks. \n\nThe APF Digital Site Licence provides pharmacies (sites) with a 12-month subscription to APF digital (with annual renewal) for their pharmacist staff. One APF Digital licence is recommended per pharmacy (site). Please note that this licence only allows staff at a licenced site to access AFP digital. APF Digital cannot be downloaded. \n\nBy purchasing APF Digital for your pharmacies, you are agreeing to the terms and conditions of the APF digital licence: https://www.psa.org.au/media-publications/australian-pharmaceutical-formulary/ \n\nDiscounts are available where a higher number of licences are purchased. For more information, enquire at APF@psa.org.au",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "apf-digital-site-licence",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APFDIGSITE",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 40969,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 40969,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 58040,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 58040,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTEUOAA5"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTEUTAA5",
+    "title": "APF Institutional Licencing",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "The most efficient way to access current practice advice is with APF Digital. It is regularly updated with current information and practice advice. You can access APF Digital from any device, anywhere, any time. With search and bookmarking features you can find the answers you need in just a few clicks.\n\nAPF Digital is an online resource that requires an internet connection for access. It is not downloaded.\n\nThere are three purchase options:\n1.     The APF Digital Single User Licence: this provides individual Pharmacists with 12 months access to APF Digital. One purchase per customer.\n2.     The APF Digital Site (Single-or-Multi) Licence: this provides Pharmacy Owners with 12 months access for their store/s. One purchase per site (pharmacy) owned.  \n3.     Pharmacy Banner Group/s licencing prices: please email APF@psa.org.au\n\nAPF Digital Subscribers are agreeing to the terms and conditions of the APF digital licence: A copy is available at https://www.psa.org.au/media-publications/australian-pharmaceutical-formulary/",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "apf-institutional-licencing",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APFDIGINST",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 0,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTEUTAA5"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYUQAY",
+    "title": "AusDI (1 user)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "Your Subscription is for 1 concurrent users/1year \nPharmacy Board approved \nAusDI is approved as both a source of current Australian Product Information, Consumer Medicines Information and as a Drug Interactions reference. \nReliable content for all health professionals \n1. As well as pharmacists, the information in AusDI is accessible to: \n2. 17,000 GPs via MedicalDirector Clinical prescribing software \n3. 11,000 dentists \n4. 350 nursing homes \n5. Universities, public and private hospitals across Australia\nMost comprehensive medicines content\n1. Over 80,000 pages of clinically relevant content. No other Australian product compares in its depth of coverage or data.\n2. Includes:\n3. Independent AusDI Drug monographs developed in Australia for the past 18 years\n4. Product Information (PI)\n5. Consumer Medicines Information (CMI)\n6. Product Summaries and Images\nSuperior interactions and safety module with 5 warning types\n1. Drug - drug interactions\n2. Duplicate therapy warnings\n3. Drug - food interactions\n4. Drug - complementary medicines interactions\n5. Potential additive shared side-effects \n6. Fully referenced detailed monographs for every interaction\nProduct identifier\n1. Easily identify unknown products by selecting physical attributes such as shape, colour and markings, with links to clinical content from the search results.\nUnique content for medication reviews and patient counselling\n1. TGA approved Indications, and other medically accepted non-TGA approved uses\n2. Counselling points for healthcare professionals\n3. Special precautions including: contraindications, interactions, paediatric and geriatric; adverse effects; dosing and adjustments; effects on lab values and patient monitoringo Information regarding discontinued products, including where available, expiry date of last batch in the market\nCurrency of data\n1. AusDI is Australia's most up-to-date medicines information resource.On average, 80% of AusDI Product Information documents updated in any month are more current compared to similar Australian medicines information resources1Data is updated daily and published monthly in line with the latest PBS schedules.\nBetter value for money \n1. No extra costs or add-ons - all content and modules are included, which includes access for up to 3 users across desktop and mobile devices for $250 plus GST. \nEase of access and superior usability \n2. Simple, easy to use interface on both desktop and mobile optimised formats providing quick access both in and outside the pharmacy. \n3. Integrated with FRED dispense.\nAusDI is now device responsive \n\" AusDI is now device responsive and can be used on most devices with an internet connection and a web browser (smartphone, tablet and desktop). Access all the comprehensive medicines information and features including the Interactions and Safety and Product Identifier modules.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "ausdi-1-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "AUSDI1",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 22636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 22636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 26818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 26818,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYUQAY"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYVQAY",
+    "title": "AusDI (3 users)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "Your Subscription is for 3 concurrent users/1year \nPharmacy Board approved \nAusDI is approved as both a source of current Australian Product Information, Consumer Medicines Information and as a Drug Interactions reference. \nReliable content for all health professionals \n1. As well as pharmacists, the information in AusDI is accessible to: \n2. 17,000 GPs via MedicalDirector Clinical prescribing software \n3. 11,000 dentists \n4. 350 nursing homes \n5. Universities, public and private hospitals across Australia\nMost comprehensive medicines content\n1. Over 80,000 pages of clinically relevant content. No other Australian product compares in its depth of coverage or data.\n2. Includes:\n3. Independent AusDI Drug monographs developed in Australia for the past 18 years\n4. Product Information (PI)\n5. Consumer Medicines Information (CMI)\n6. Product Summaries and Images\nSuperior interactions and safety module with 5 warning types\n1. Drug - drug interactions\n2. Duplicate therapy warnings\n3. Drug - food interactions\n4. Drug - complementary medicines interactions\n5. Potential additive shared side-effects \n6. Fully referenced detailed monographs for every interaction\nProduct identifier\n1. Easily identify unknown products by selecting physical attributes such as shape, colour and markings, with links to clinical content from the search results.\nUnique content for medication reviews and patient counselling\n1. TGA approved Indications, and other medically accepted non-TGA approved uses\n2. Counselling points for healthcare professionals\n3. Special precautions including: contraindications, interactions, paediatric and geriatric; adverse effects; dosing and adjustments; effects on lab values and patient monitoringo Information regarding discontinued products, including where available, expiry date of last batch in the market\nCurrency of data\n1. AusDI is Australia's most up-to-date medicines information resource.On average, 80% of AusDI Product Information documents updated in any month are more current compared to similar Australian medicines information resources1Data is updated daily and published monthly in line with the latest PBS schedules.\nBetter value for money \n1. No extra costs or add-ons - all content and modules are included, which includes access for up to 3 users across desktop and mobile devices for $250 plus GST. \nEase of access and superior usability \n2. Simple, easy to use interface on both desktop and mobile optimised formats providing quick access both in and outside the pharmacy. \n3. Integrated with FRED dispense.\nAusDI is now device responsive \n\" AusDI is now device responsive and can be used on most devices with an internet connection and a web browser (smartphone, tablet and desktop). Access all the comprehensive medicines information and features including the Interactions and Safety and Product Identifier modules.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "ausdi-3-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "AUSDI3",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 27182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 27182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 32636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 32636,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYVQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000Ayy8MAAR",
+    "title": "Australian Medicines Handbook 2020 (AMH) - SA Stock",
+    "category": "Drug References",
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": "Paperback",
+    "handle": "australian-medicines-handbook-2020-amh-sa-stock",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "AMH20B-SA",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 19000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 24454,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 25364,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 25364,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Ayy8MAAR"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYSQAY",
+    "title": "Australian Pharmaceutical Formulary Digital (1 user)",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "Digital APF is an online resource that requires an internet connection for access. It is not downloaded.\n\nThis Single User Subscription provides one person with 12 months access to the Digital APF, your everyday guide to pharmacy practice.\n\nThe APF24 provides a wealth of knowledge to support your everyday practice in all practice settings. Find essential information on topics such as counselling, extemporaneous dispensing, cautionary advisory labels, opioid substitution therapy, wound dressings and substituting biosimilar medicines. Consultant and hospital pharmacists may be interested in information about dosing in renal impairment, interpreting laboratory test results and therapeutic drug monitoring. \nPharmacy students and interns will find APF24 an invaluable resource to support their studies and prepare for exams and professional practice. \nWith APF24 at your fingertips, you'll always have the answers you need.\n\nDigital Subscribers are agreeing to the terms and conditions of the APF digital licence a copy is available www.psa.org.au/apf",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "australian-pharmaceutical-formulary-digital-1-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APF24D1",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 14000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 14000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 20000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 20000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYSQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTNR1AAP",
+    "title": "Australian Pharmaceutical Formulary Digital (institutional licenses)",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "australian-pharmaceutical-formulary-digital-institutional-licenses",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APF25DI",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 0,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTNR1AAP"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTNQzAAP",
+    "title": "Australian Pharmaceutical Formulary Digital (multiple site licenses)",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "australian-pharmaceutical-formulary-digital-multiple-site-licenses",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APF25DS",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 38250,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 38250,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTNQzAAP"
+    }
+  },
+  {
+    "external_id": "01t0o00000BTEUEAA5",
+    "title": "Australian Pharmaceutical Formulary Handbook ed 25",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "Please Note: PSA student members are only allowed to purchase one book per year at the discounted price.\n\nThe APF is your everyday guide to pharmacy practice. APF25 provides a wealth of knowledge to support your everyday practice in all practice settings. Find essential information on topics such as counselling, extemporaneous dispensing, cautionary advisory labels, opioid substitution therapy, wound dressings and substituting biosimilar medicines. Consultant and hospital pharmacists maybe interested in information about dosing in renal impairment, interpreting laboratory test results and therapeutic drug monitoring. Pharmacy students and interns will find APF25 an invaluable resource to support their studies and prepare for exams and professional practice. With APF25 at your fingertips, you'll always have the answers you need. \n\nPlease Note: PSA student members are only allowed to purchase one book per year at the discounted price.",
+    "additionalNotes": null,
+    "publishFormat": "Hardback",
+    "handle": "australian-pharmaceutical-formulary-handbook-ed-25",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APF25B",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 19545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 21818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 31818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 31818,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BTEUEAA5"
+    }
+  },
+  {
+    "external_id": "01tGB00000Co4UPYAZ",
+    "title": "Australian Pharmaceutical Formulary Handbook ed 26",
+    "category": "Australian Pharmaceutical Formulary",
+    "weight": null,
+    "description": "A guide to best practice\nThe Australian Pharmaceutical Formulary and Handbook is an invaluable resource for pharmacists working in all practice settings, including community, hospital, embedded and consultant pharmacy roles. APF26 is also a valuable teaching tool and guide for pharmacy students, providing key information on many of the activities performed by pharmacists in daily practice. It supports the role of pharmacists in achieving medicine safety and contains practical, current and evidence-based information and guidance on a wide range of medicine- and pharmacy-specific topics, including dispensing, compounding, therapeutic management, and providing health information. Using this information as clinical decision support at the point of care will help promote safe and effective use of medicines. \n\nPlease Note: PSA student members are only allowed to purchase one book per year at the discounted price.",
+    "additionalNotes": null,
+    "publishFormat": "Softcover",
+    "handle": "australian-pharmaceutical-formulary-handbook-ed-26",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APF26B",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 20909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 23636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 34545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 34545,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01tGB00000Co4UPYAZ"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bZVQAY",
+    "title": "Australian Pharmacist - international (12 Month Subscription)",
+    "category": "Pharmacy Products",
+    "weight": null,
+    "description": "12 month subscription to Australian Pharmacist for eligible international customers. To purchase this product you must be a business, library or other health professional not eligible for membership with the PSA.",
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "australian-pharmacist-international-12-month-subscription",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APMAG2",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 30000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 30000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bZVQAY"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bZUQAY",
+    "title": "Australian Pharmacist (12 month subscription)",
+    "category": "Pharmacy Products",
+    "weight": null,
+    "description": "This subscription is for businesses, libraries and pharmacy stakeholders stakeholders not eligible to be a member of the Pharmaceutical Society of Australia. By purchasing this item you confirm that you are not eligible to become a member of the PSA.\n\nThis product is for postage within Australian only.",
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "australian-pharmacist-12-month-subscription",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "APMAG1",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 8636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 20446,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 20446,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bZUQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co2i4AAB",
+    "title": "Deadly Pharmacist Tie",
+    "category": null,
+    "weight": null,
+    "description": "Deadly Pharmacist Scarf",
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "deadly-pharmacist-tie",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "DPTie",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 4091,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co2i4AAB"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYYQAY",
+    "title": "Don't Rush to Crush for AusDI (add-on)",
+    "category": "Drug References",
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "don-t-rush-to-crush-for-ausdi-add-on",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "DRTCAU",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 19500,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 20500,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 20500,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 20500,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYYQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3MIAAZ",
+    "title": "Don't Rush to Crush for eMIMSplus",
+    "category": "Drug References",
+    "weight": null,
+    "description": "the latest Don’t Rush to Crush by the Society of Hospital Pharmacists of Australia is available as an add-on to eMIMSplus. \r\n\r\nThis is an additional module on eMIMSplus and can only be used in conjunction with a current eMIMSplus subscription. Only one subscription is needed per pharmacy/site regardless of the number of eMIMSplus users. You can add Don’t Rush to Crush to your current eMIMSplus subscription at a prorated cost that aligns with your existing subscription. \r\n\r\nBoth eMIMSplus and Don’t Rush to Crush are included in the Pharmacy Board of Australia’s list of essential references for pharmacy practice. The Don’t Rush to Crush content is continuously updated when they are made by the SHPA.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "don-t-rush-to-crush-for-emimsplus",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "DRTCEMC",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 20500,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 20500,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 20500,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3MIAAZ"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bY7QAI",
+    "title": "Drug of Addiction Register",
+    "category": "Pharmacy Products",
+    "weight": 0.75,
+    "description": "Drug of Addiction Register is used for recording S8 Scheduled Drugs \nThe Red 100 page DD Register has been in circulation for over 20 years \nIs widely used by Pharmacists & Veterinary Surgeons \nThis register complies with the requirements of the Drugs, Poisons and Controlled Substances Regulations",
+    "additionalNotes": null,
+    "publishFormat": "Paperback",
+    "handle": "drug-of-addiction-register",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "DOAR03",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 5545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 5545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 6636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 6636,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bY7QAI"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bZDQAY",
+    "title": "Electronic Self Care Fact Cards (12 months subscription)",
+    "category": "Programs",
+    "weight": null,
+    "description": "Up-to-date, evidence based written health advice to consumers on more than 100 common health topics for 12 months electronic subscription. \n\nLog in details will be provided after your purchase.",
+    "additionalNotes": null,
+    "publishFormat": "Service",
+    "handle": "electronic-self-care-fact-cards-12-months-subscription",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "SCFC",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 40000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 40000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 64000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 64000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bZDQAY"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYaQAI",
+    "title": "eMIMS Classic (3 users)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "Downloaded to sit on your hard drive from a DVD eMIMS Classic can be installed on a network or single PC/laptop. You will be provided with a license key, which will activate your subscription and a DVD in April, September and December. Monthly updates need to be manually downloaded from the MIMS website and installed for months other than when you receive a DVD.  \nSupported Platforms; Windows Vista, Windows 7 and Windows 8 For more information regarding requirements, support and for access to product training visit the MIMS website",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emims-classic-3-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMCLA3",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 54091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 54091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 60000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 60000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYaQAI"
+    }
+  },
+  {
+    "external_id": "01t0o000009rNWnAAM",
+    "title": "eMIMS Classic (additional user)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "Downloaded to sit on your hard drive from a DVD eMIMS Classic can be installed on a network or single PC/laptop. You will be provided with a license key, which will activate your subscription and a DVD in April, September and December. Monthly updates need to be manually downloaded from the MIMS website and installed for months other than when you receive a DVD.  \nSupported Platforms; Windows Vista, Windows 7 and Windows 8 For more information regarding requirements, support and for access to product training visit the MIMS website",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emims-classic-additional-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMCLA+",
+        "prices": [
+          {
+            "region_id_or_name": "au-student",
+            "amount": 17704,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 18091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 20000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 20000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o000009rNWnAAM"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3MNAAZ",
+    "title": "eMIMS Classic and IMgateway package (3 users)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "Downloaded to sit on your hard drive from a DVD eMIMS Classic can be installed on a network or single PC/laptop. You will be provided with a license key, which will activate your subscription and a DVD in April, September, and December. Monthly updates need to be manually downloaded from the MIMS website and installed for months other than when you receive a DVD.\n\nSupported Platforms; Windows Vista, Windows 7 and Windows 8 For more information regarding requirements, support and for access to product training visit the MIMS website.\n\nThe IMgateway interactions checker, is an optional additional module available on eMIMS. IMgateway, owned and developed by UnityHealth, disseminates quality information, research and education on evidence-based complementary and conventional medicine. IMgateway currently houses over 1,450 herb/supplement/food-drug interactions. The interactions database is developed in collaboration with reputable institutions such as the University of Sydney, School of Pharmacy and the National Institute of Complementary Medicine.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emims-classic-and-imgateway-package-3-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMCLAI3",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 82727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 85455,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 85455,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3MNAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3O8AAJ",
+    "title": "eMIMSplus 1 user",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient. \n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-1-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPLU1",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 27182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 30000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 30000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3O8AAJ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3OCAAZ",
+    "title": "eMIMSplus 2 users",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient. \n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-2-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPLU2",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 40818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 45909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 45909,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3OCAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3OHAAZ",
+    "title": "eMIMSplus 3 users",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient. \n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-3-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPLU3",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 51727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 57727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 57727,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3OHAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3O9AAJ",
+    "title": "eMIMSplus additional user",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient. \n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-additional-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPLU+",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 16818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 18636,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 18636,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3O9AAJ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3OMAAZ",
+    "title": "eMIMSplus and IMgateway 1 user",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient.\n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.\n\nThe IMgateway interactions checker, is an additional module available on eMIMSplus. IMgateway, owned and developed by UnityHealth, disseminates quality information, research and education on evidence-based complementary and conventional medicine. IMgateway currently houses over 1,450 herb/supplement/food-drug interactions. The interactions database is developed in collaboration with reputable institutions such as the University of Sydney, School of Pharmacy and the National Institute of Complementary Medicine.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-and-imgateway-1-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPIMG1",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 40818,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 42273,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 42273,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3OMAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3ORAAZ",
+    "title": "eMIMSplus and IMgateway 2 users",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient.\n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.\n\nThe IMgateway interactions checker, is an additional module available on eMIMSplus. IMgateway, owned and developed by UnityHealth, disseminates quality information, research and education on evidence-based complementary and conventional medicine. IMgateway currently houses over 1,450 herb/supplement/food-drug interactions. The interactions database is developed in collaboration with reputable institutions such as the University of Sydney, School of Pharmacy and the National Institute of Complementary Medicine.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-and-imgateway-2-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPIMG2",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 63545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 65909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 65909,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3ORAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3OSAAZ",
+    "title": "eMIMSplus and IMgateway 3 users",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient.\n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.\n\nThe IMgateway interactions checker, is an additional module available on eMIMSplus. IMgateway, owned and developed by UnityHealth, disseminates quality information, research and education on evidence-based complementary and conventional medicine. IMgateway currently houses over 1,450 herb/supplement/food-drug interactions. The interactions database is developed in collaboration with reputable institutions such as the University of Sydney, School of Pharmacy and the National Institute of Complementary Medicine.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-and-imgateway-3-users",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPIMG3",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 80455,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 83182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 83182,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3OSAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3OTAAZ",
+    "title": "eMIMSplus and IMgateway additional user",
+    "category": "Drug References",
+    "weight": null,
+    "description": "eMIMSplus is the revamped web platform of eMIMS Cloud, offering a faster and more seamless experience. The new additional module on eMIMSplus, Medicines in Pregnancy, allows you to compare the TGA pregnancy category of medicines within the same therapeutic class or products containing a selected active ingredient.\n\nThe eMIMSplus subscription includes access to the eMIMSplus website and mobile app.\n\nFor more information or to register for a 30-day trial, please visit the eMIMSplus website https://emims.plus/.\n\nThe IMgateway interactions checker, is an additional module available on eMIMSplus. IMgateway, owned and developed by UnityHealth, disseminates quality information, research and education on evidence-based complementary and conventional medicine. IMgateway currently houses over 1,450 herb/supplement/food-drug interactions. The interactions database is developed in collaboration with reputable institutions such as the University of Sydney, School of Pharmacy and the National Institute of Complementary Medicine.",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "emimsplus-and-imgateway-additional-user",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "EMPIMG+",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 26364,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 27182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 27182,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3OTAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000BELY1AAP",
+    "title": "Gift Voucher",
+    "category": "Gift vouchers",
+    "weight": 0.1,
+    "description": "Not sure whitch book to buy?\nWhy not buy your Friend a PSA Book Voucher so they can choose to meet their needs",
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "gift-voucher",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "GIFT",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 0,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BELY1AAP"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bYAQAY",
+    "title": "Herbs and Natural Supplements",
+    "category": "Complementary Medicines",
+    "weight": 2.96,
+    "description": "Herbs and Natural Supplements: An evidence-based guide, 4th Edition is an authoritative, evidence-based reference. Now split into two volumes, the new edition covers the essentials to the safe and effective use of herbal, nutritional and food supplements. Updated with evidence from the latest research impacting on herbal and natural medicine, top leaders within the fields of Pharmacy, Herbal Medicine and Natural Medicine provide a comprehensive guide covering critical information such as daily intake, main actions and indications, adverse reactions, contraindications and precautions, safety in pregnancy and more. \n The first volume provides a foundation of knowledge in the clinical practice of complementary medicine. It emphasises safe practice with strategies to prevent adverse drug reactions, guidelines in assessing benefit, risk, and harm and the evaluation of research.\n\nThe second volume provides current, evidence-based monographs on the 132 most popular herbs, nutrients and food supplements.\nKey Features:\nComprehensive review of herbal medicine, clinical nutrition, aromatherapy, and food as medicine\nPatient safety and wellness\nConsiderations in preoperative care and pregnancy\nUse in the treatment of cancer\nHerb/nutrient - drug interactions",
+    "additionalNotes": null,
+    "publishFormat": "Paperback (2 volume set)",
+    "handle": "herbs-and-natural-supplements",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "HNSV04",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 11545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 11545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 15727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 15727,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bYAQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3MSAAZ",
+    "title": "MIMS IVS Annual 2025 (Veterinary)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "MIMS IVS Annual (Veterinary) is a hard cover A5-sized book for veterinary information.\n\n•\tCurrent usage information for APVMA registered medicines \n•\tAdditional categories\n        o\tAnimal nutrition and supplements\n        o\tGrooming aids\n        o\tDiagnostic agents\n        o\tDisinfectants\n•\tUpdated annually with new and revised listings\n•\tGrouped by therapeutic classes\n•\tAPVMA withholding periods \n•\tListings for recently registered APVMA products",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "mims-ivs-annual-2025-veterinary",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "MIVSA24",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 34455,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 38182,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 38182,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3MSAAZ"
+    }
+  },
+  {
+    "external_id": "01t0o00000Co3O7AAJ",
+    "title": "MIMS IVS Cloud 1 user (Veterinary)",
+    "category": "Drug References",
+    "weight": null,
+    "description": "IVS Cloud (Veterinary) is a browser based online product for veterinary information\n\n•\tCurrent usage information for APVMA registered medicines \n•\tAdditional categories\n        o\tAnimal nutrition and supplements\n        o\tGrooming aids\n        o\tDiagnostic agents\n        o\tDisinfectants\n•\tGrouped by therapeutic classes\n•\tAPVMA withholding periods \n•\tListings for recently registered APVMA products\n•\tUpdated quarterly in March, June, September and December\n•\tLinks to Safety Data Sheets and registered product labels",
+    "additionalNotes": null,
+    "publishFormat": "Digital",
+    "handle": "mims-ivs-cloud-1-user-veterinary",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "MIVSC1",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 21727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 24091,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 24091,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000Co3O7AAJ"
+    }
+  },
+  {
+    "external_id": "01t7F000006BJGyQAO",
+    "title": "Name slide (Gold)",
+    "category": "Pharmacy Products",
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "name-slide-gold",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "NSLIDG",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 1909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 2545,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 2545,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F000006BJGyQAO"
+    }
+  },
+  {
+    "external_id": "01t0o00000BFPN2AAP",
+    "title": "NSW ATU23",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "nsw-atu23",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "5121-40-302",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 25000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 25000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BFPN2AAP"
+    }
+  },
+  {
+    "external_id": "01t7F000006B5x4QAC",
+    "title": "Postage",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "postage",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "POST",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 909,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F000006B5x4QAC"
+    }
+  },
+  {
+    "external_id": "01t7F000006LOVkQAO",
+    "title": "Printed Fact Cards",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "printed-fact-cards",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "PFACA",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 2727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 2727,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F000006LOVkQAO"
+    }
+  },
+  {
+    "external_id": "01t0o00000BKrdlAAD",
+    "title": "Queensland Pharmacists of World War I - QLD Stock",
+    "category": "Pharmacy History",
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": "Hardback",
+    "handle": "queensland-pharmacists-of-world-war-i-qld-stock",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "QPWW1-QLD",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 2727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 2727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 2727,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 2727,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BKrdlAAD"
+    }
+  },
+  {
+    "external_id": "01t7F0000048bZCQAY",
+    "title": "Self Care Pharmacy Assistant Training Modules (12 months subscription)",
+    "category": "Programs",
+    "weight": null,
+    "description": "Train and upskill team members with online pharmacy assistant training modules that help meet QCPP Refresher Training requirements. \n\nAccess for 12 months is $120 per Pharmacy Assistant (non transferable)",
+    "additionalNotes": null,
+    "publishFormat": "Service",
+    "handle": "self-care-pharmacy-assistant-training-modules-12-months-subscription",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "SCPA",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 10909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-student",
+            "amount": 10909,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 17454,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 17454,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t7F0000048bZCQAY"
+    }
+  },
+  {
+    "external_id": "01t0o00000A0EwXAAV",
+    "title": "The Merck Manual of Diagnosis and Therapy, 20th Edition (ACT Stock)",
+    "category": "Pharmacy Products",
+    "weight": 1.88,
+    "description": "For its 20th Edition, the Merck Manual of Diagnosis and Therapy has been thoroughly updated and thoughtfully expanded with\n*       More than 850 additional pages\n*       15 new chapters\n*       Over 300 new tables\n*       56 new figures\n*       A 16-page, full-color insert showing skin, eye, and oral disorders\nPacked with essential information on diagnosing and treating medical disorders, this handy, compact guide was written by a team of clinicians for everyday use by medical professionals for delivery of the best care to their patients. Designed for maximum clinical utility, the new Merck Manual of Diagnosis and Therapy 19th edition makes it easy to find the right information, right when it is needed. It is a must-have for medical students, residents, practicing physicians, nurses, and allied health professionals.",
+    "additionalNotes": "The world's most widely used medical reference is now better than ever!",
+    "publishFormat": "Hardback",
+    "handle": "the-merck-manual-of-diagnosis-and-therapy-20th-edition-act-stock",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "M0004V20-ACT",
+        "prices": [
+          {
+            "region_id_or_name": "au-member",
+            "amount": 9454,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-default",
+            "amount": 15000,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-nonmember",
+            "amount": 15000,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000A0EwXAAV"
+    }
+  },
+  {
+    "external_id": "01t0o00000BLIuHAAX",
+    "title": "Update Payment Details",
+    "category": null,
+    "weight": null,
+    "description": null,
+    "additionalNotes": null,
+    "publishFormat": null,
+    "handle": "update-payment-details",
+    "status": "published",
+    "variants": [
+      {
+        "sku": "UPDATE",
+        "prices": [
+          {
+            "region_id_or_name": "au-default",
+            "amount": 0,
+            "currency_code": "AUD"
+          },
+          {
+            "region_id_or_name": "au-member",
+            "amount": 0,
+            "currency_code": "AUD"
+          }
+        ],
+        "inventory_quantity": 99999,
+        "manage_inventory": false
+      }
+    ],
+    "collection": "Online Shop",
+    "metadata": {
+      "sf_product2_id": "01t0o00000BLIuHAAX"
+    }
+  }
+]

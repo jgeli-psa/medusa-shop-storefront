@@ -4,8 +4,9 @@ import { notFound } from "next/navigation"
 import { getCategoryByHandle, listCategories } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
-import CategoryTemplate from "@modules/categories/templates"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import ShopWithSidebar from "@/components/ShopWithSidebar/templates"
+import CategoryTemplate from "@/components/ShopWithSidebar/categories"
 
 type Props = {
   params: Promise<{ category: string[]; countryCode: string }>
@@ -75,11 +76,15 @@ export default async function CategoryPage(props: Props) {
   }
 
   return (
+<>
     <CategoryTemplate
       category={productCategory}
       sortBy={sortBy}
       page={page}
       countryCode={params.countryCode}
     />
+
+</>
+    
   )
 }

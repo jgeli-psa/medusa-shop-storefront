@@ -16,7 +16,7 @@ import {
 } from "./cookies"
 
 export const retrieveCustomer =
-  async (): Promise<HttpTypes.StoreCustomer | null> => {
+  async (): Promise<any | null> => {
     const authHeaders = await getAuthHeaders()
 
     if (!authHeaders) return null
@@ -29,8 +29,10 @@ export const retrieveCustomer =
       ...(await getCacheOptions("customers")),
     }
 
-    return await sdk.client
-      .fetch<{ customer: HttpTypes.StoreCustomer }>(`/store/customers/me`, {
+  let customer = {}
+
+    let authCustomer = await sdk.client
+      .fetch<{ customer: any }>(`/store/customers/me`, {
         method: "GET",
         query: {
           fields: "*orders",
@@ -40,7 +42,45 @@ export const retrieveCustomer =
         cache: "force-cache",
       })
       .then(({ customer }) => customer)
-      .catch(() => null)
+      .catch((e) => console.log(e, 'ERR'))
+       
+     if(!authCustomer) return null;  
+      
+    let customerData = await retrieveCustomerById(authCustomer?.id) 
+      console.log(customerData, 'cust d')
+    customer = {...authCustomer, membership: customerData.groups[0] ? customerData.groups[0].name : 'nonmember' }  
+      
+    return customer;
+      
+  }
+  
+  
+export const retrieveCustomerById =
+  async (id): Promise<any | null> => {
+    const authHeaders = await getAuthHeaders()
+
+    if (!authHeaders) return null
+
+    const headers = {
+      ...authHeaders,
+    }
+
+    const next = {
+      ...(await getCacheOptions(id)),
+    }
+
+    return await sdk.client
+      .fetch<{ customer: HttpTypes.StoreCustomer }>(`/store/customers/${id}`, {
+        method: "GET",
+        query: {
+          fields: "*orders,*groups",
+        },
+        headers,
+        next,
+        cache: "force-cache",
+      })
+      .then(({ customer }) => customer)
+      .catch((e) => console.log(e, 'ERR'))
   }
 
 export const updateCustomer = async (body: HttpTypes.StoreUpdateCustomer) => {

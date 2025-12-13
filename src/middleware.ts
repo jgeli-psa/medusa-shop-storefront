@@ -104,6 +104,18 @@ async function getCountryCode(
  * Middleware to handle region selection and onboarding status.
  */
 export async function middleware(request: NextRequest) {
+
+  const { pathname } = request.nextUrl;
+  
+  // === ADD THIS CHECK AT THE BEGINNING ===
+  // Redirect /au to /au/shop (exact match for region root)
+  if (pathname === '/au') {
+    return NextResponse.redirect(
+      new URL('/au/shop', request.url),
+      307
+    );
+  }
+
   let redirectUrl = request.nextUrl.href
 
   let response = NextResponse.redirect(redirectUrl, 307)
