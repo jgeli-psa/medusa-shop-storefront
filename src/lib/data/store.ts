@@ -3,22 +3,31 @@
 import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
 import { HttpTypes } from "@medusajs/types"
-import { getCacheOptions } from "./cookies"
+import { getAuthHeaders, getCacheOptions } from "./cookies"
 
 /**
  * Retrieve store details
  */
 export const retrieveStore = async () => {
-  const next = {
-    ...(await getCacheOptions("store")),
-  }
 
+    const authHeaders = await getAuthHeaders()
+
+    if (!authHeaders) return null
+
+    const headers = {
+      ...authHeaders,
+    }
+
+    const next = {
+      ...(await getCacheOptions("store")),
+    }
   
 
   return sdk.client
     .fetch<{ store: any }>(`/store/custom`, {
       method: "GET",
       next,
+      headers,
       cache: "force-cache",
     })
     .then((data) => data)
