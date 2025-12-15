@@ -24,6 +24,8 @@ const PreviewSliderModal = () => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
   }, []);
+  
+  console.log(data, 'DATA')
 
   return (
     <div
@@ -95,26 +97,21 @@ const PreviewSliderModal = () => {
       </div>
 
       <Swiper ref={sliderRef} slidesPerView={1} spaceBetween={20}>
+      {data?.images?.map((img, key) => {
+       return (
         <SwiperSlide>
           <div className="flex justify-center items-center">
             <Image
-              src={"/images/products/product-2-bg-1.png"}
-              alt={"product image"}
+              src={img?.url}
+              alt={img?.product_id}
               width={450}
               height={450}
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center">
-            <Image
-              src={"/images/products/product-2-bg-1.png"}
-              alt={"product image"}
-              width={450}
-              height={450}
-            />
-          </div>
-        </SwiperSlide>
+
+       )
+      })}
       </Swiper>
     </div>
   );

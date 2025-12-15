@@ -1,14 +1,11 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
-import InteractiveLink from "@modules/common/components/interactive-link"
-import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
-import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
 import PaginatedProducts from "../templates/paginated-products"
 import Breadcrumb from "@/components/Common/Breadcrumb"
+import SkeletonStoreTemplate from "@modules/skeletons/templates/skeleton-grid"
 
 export default function CategoryTemplate({
   category,
@@ -52,8 +49,7 @@ export default function CategoryTemplate({
     
         <Suspense
           fallback={
-            <SkeletonProductGrid
-              numberOfProducts={category.products?.length ?? 8}
+            <SkeletonStoreTemplate
             />
           }
         >

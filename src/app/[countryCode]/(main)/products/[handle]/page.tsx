@@ -5,7 +5,9 @@ import { getRegion, listRegions } from "@lib/data/regions"
 import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
 import BlogDetailsWithSidebar from "@/components/BlogDetailsWithSidebar"
-import { retrieveCustomer } from "@lib/data/customer"
+import { retrieveCustomer, retrieveCustomerById } from "@lib/data/customer"
+import { formatProduct } from "@lib/formatters/product-formatter"
+import { listCategories } from "@lib/data/categories"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -63,11 +65,11 @@ function getImagesForVariant(
   }
 
   const variant = product.variants!.find((v) => v.id === selectedVariantId)
-  if (!variant || !variant.images.length) {
+  if (!variant || (variant.images && !variant?.images.length)) {
     return product.images
   }
 
-  const imageIdsMap = new Map(variant.images.map((i) => [i.id, true]))
+  const imageIdsMap = new Map(variant?.images ? variant?.images.map((i) => [i.id, true]) : [])
   return product.images!.filter((i) => imageIdsMap.has(i.id))
 }
 
@@ -103,10 +105,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function ProductPage(props: Props) {
   const params = await props.params
   const region = await getRegion(params.countryCode)
-
-  const searchParams = await props.searchParams
-
-  const selectedVariantId = searchParams.v_id
+  const customer = await retrieveCustomer();
+  let customerData = {};
+  
+  if(customer?.id){
+    customerData = await retrieveCustomerById(customer?.id);
+  }
 
   if (!region) {
     notFound()
@@ -115,21 +119,25 @@ export default async function ProductPage(props: Props) {
   const pricedProduct = await listProducts({
     countryCode: params.countryCode,
     queryParams: { handle: params.handle },
-  }).then(({ response }) => response.products[0])
+  }).then(({ response }) =>  response.products[0])
 
-  const images = getImagesForVariant(pricedProduct, selectedVariantId)
 
   if (!pricedProduct) {
     notFound()
   }
+ 
+
+      let categories = await listCategories();
+    
 
   return (
   <>
       <BlogDetailsWithSidebar
-      product={pricedProduct}
+      product={formatProduct(pricedProduct, customerData)}
       region={region}
       countryCode={params.countryCode}
-      images={images}
+      customer={customerData}
+      categories={categories}
       />
     {/* <ProductTemplate
       product={pricedProduct}

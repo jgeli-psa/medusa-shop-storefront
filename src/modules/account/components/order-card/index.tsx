@@ -3,8 +3,8 @@ import { useMemo } from "react"
 
 import Thumbnail from "@modules/products/components/thumbnail"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
+import { formatPrice } from "@lib/formatters/prices"
 
 type OrderCardProps = {
   order: HttpTypes.StoreOrder
@@ -33,10 +33,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
           {new Date(order.created_at).toDateString()}
         </span>
         <span className="px-2" data-testid="order-amount">
-          {convertToLocale({
-            amount: order.total,
-            currency_code: order.currency_code,
-          })}
+          {formatPrice(order.total, order.currency_code)}
         </span>
         <span className="pl-2">{`${numberOfLines} ${
           numberOfLines > 1 ? "items" : "item"

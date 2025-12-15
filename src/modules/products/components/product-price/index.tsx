@@ -1,15 +1,17 @@
-import { formatPrice, calculateDiscount } from "@lib/formatters/prices"
+import {formatPrice, calculateDiscount } from "@lib/formatters/prices"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 
 export default function ProductPrice({
   product,
   variant,
-  membership = "nonmember"
+  membership = "nonmember",
+  currencyCode = "aud"
 }: {
   product: any
   variant?: HttpTypes.StoreProductVariant
   membership?: "member" | "student" | "nonmember"
+  currencyCode: any
 }) {
   const { cheapestPrice } = getProductPrice({
     product,
@@ -20,9 +22,9 @@ export default function ProductPrice({
   
   // Prices in cents
   const prices = {
-    nonmember: metadata.nonmember ? Math.round(Number(metadata.nonmember) * 100) : 0,
-    member: metadata.member ? Math.round(Number(metadata.member) * 100) : 0,
-    student: metadata.student ? Math.round(Number(metadata.student) * 100) : 0,
+    nonmember: metadata.nonmember ? Number(metadata.nonmember) : 0,
+    member: metadata.member ? Number(metadata.member) : 0,
+    student: metadata.student ? Number(metadata.student) : 0,
   }
 
   // Determine user's price
@@ -40,11 +42,14 @@ export default function ProductPrice({
       }
     : null
 
-  if (!cheapestPrice) {
-    return <div className="h-9 w-32 bg-gray-200 rounded animate-pulse" />
-  }
 
-  const currencyCode = cheapestPrice.currency_code || 'AUD'
+
+
+  // if (!cheapestPrice) {
+  //   return <div className="h-9 w-32 bg-gray-200 rounded animate-pulse" />
+  // }
+
+
 
   return (
     <div className="space-y-4 mb-5">
@@ -104,7 +109,7 @@ export default function ProductPrice({
             )}
             
             {/* Student */}
-            {prices.student && (
+            {prices.student > 0 && (
               <div className={`flex justify-between items-center ${
                 membership === "student" ? "text-green-600 font-bold" : ""
               }`}>

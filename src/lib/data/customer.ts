@@ -49,7 +49,7 @@ export const retrieveCustomer =
     let customerData = await retrieveCustomerById(authCustomer?.id) 
       console.log(customerData, 'cust d')
     customer = {...authCustomer, membership: customerData.groups[0] ? customerData.groups[0].name : 'nonmember' }  
-      
+      console.log(customer, 'cuss')
     return customer;
       
   }
@@ -69,8 +69,9 @@ export const retrieveCustomerById =
       ...(await getCacheOptions(id)),
     }
 
-    return await sdk.client
-      .fetch<{ customer: HttpTypes.StoreCustomer }>(`/store/customers/${id}`, {
+    let customerData = {}
+    let authCustomer = await sdk.client
+      .fetch<{ customer: any }>(`/store/customers/${id}`, {
         method: "GET",
         query: {
           fields: "*orders,*groups",
@@ -81,6 +82,11 @@ export const retrieveCustomerById =
       })
       .then(({ customer }) => customer)
       .catch((e) => console.log(e, 'ERR'))
+      
+      
+      customerData = {...authCustomer, membership: authCustomer.groups[0] ? authCustomer.groups[0].name : 'nonmember'}
+      
+      return customerData
   }
 
 export const updateCustomer = async (body: HttpTypes.StoreUpdateCustomer) => {

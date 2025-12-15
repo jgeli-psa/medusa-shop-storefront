@@ -22,6 +22,13 @@ export const CURRENCIES: Record<string, CurrencyConfig> = {
     decimalDigits: 2,
     rounding: 0,
   },
+  AU: {
+    code: 'AUD',
+    symbol: '$',
+    name: 'Australian Dollar',
+    decimalDigits: 2,
+    rounding: 0,
+  },
   USD: {
     code: 'USD',
     symbol: '$',
@@ -117,13 +124,16 @@ export function formatPrice(
   // Create formatter
   const formatter = new Intl.NumberFormat(locale, formatOptions)
 
-  let formatted = formatter.format(mainUnitAmount)
+  let formatted = formatter.format(amount)
+
+// console.log(formatted, 'FORM1', divisor, mainUnitAmount, amount)
 
   // Add currency code if requested and not already included
   if (showCode && !formatted.includes(currency.code)) {
     formatted = `${formatted} ${currency.code}`
+    // console.log(formatted, 'FORM2')
   }
-
+// console.log(formatted, 'FORMA', currencyCode, currency)
   return formatted
 }
 

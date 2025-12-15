@@ -3,18 +3,17 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import { useModalContext } from "@/lib/context/QuickViewModalContext";
 import { AppDispatch, useAppSelector } from "@/redux/store";
-import { addItemToCart } from "@/redux/features/cart-slice";
 import { useDispatch } from "react-redux";
 import { usePreviewSlider } from "@/lib/context/PreviewSliderContext";
 import { updateproductDetails } from "@/redux/features/product-details";
 import Thumbnail from "@modules/products/components/thumbnail";
-import { Text } from "@medusajs/ui";
 import Link from "next/link";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
 import { addToCart } from "@lib/data/cart";
 import { useParams, usePathname, useSearchParams } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
 import { isEqual } from "lodash";
+import Image from "next/image";
 
 
 const optionsAsKeymap = (
@@ -114,7 +113,8 @@ const QuickViewModal = () => {
       })
     }, [product.variants, options])
 
-
+  
+  
 
   return (
     <div
@@ -157,11 +157,18 @@ const QuickViewModal = () => {
                         }`}
                     >
              
-                  <Thumbnail
-            thumbnail={img}
+           {/*        <Thumbnail
+            thumbnail={img?.url}
             images={[img]}
             size="square"
-          />
+          /> */}
+                     <Image
+                        src={img.url || ""}
+                        alt="thumbnail"
+                        width={61}
+                        height={61}
+                        className="aspect-square"
+                      />
                     </button>
                   ))}
                 </div>
@@ -191,11 +198,12 @@ const QuickViewModal = () => {
                     </button>
 
                     {product?.images?.[activePreview] && (
-                       <Thumbnail
-            thumbnail={product?.images?.[activePreview]}
-            images={[product?.images?.[activePreview]]}
-            size="square"
-          />
+                      <Image
+                        src={product.images[activePreview]?.url}
+                        alt="products-details"
+                        width={400}
+                        height={400}
+                      />
                       
                     )}
                   </div>
@@ -204,9 +212,10 @@ const QuickViewModal = () => {
             </div>
 
             <div className="max-w-[445px] w-full">
-              <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-5">
+             {(product.discountable && product.price > product.discountedPrice) && <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-5">
                 Members save ${Number(product.originalPrice - product.discountedPrice).toFixed(2)}
               </span>
+              }
               <h3 className="font-semibold text-xl xl:text-heading-5 text-dark mb-3">
                 {product.title}
               </h3>
@@ -268,7 +277,7 @@ const QuickViewModal = () => {
                     <span className="font-semibold text-dark text-xl xl:text-heading-4">
                       ${product.discountedPrice}
                     </span>
-                         {product.discountable && 
+                         {(product.discountable && product.price > product.discountedPrice) && 
                          <span className="font-medium text-dark-4 text-lg xl:text-2xl line-through">
                       ${product.price}
                     </span>
@@ -384,7 +393,7 @@ const QuickViewModal = () => {
                 fill=""
               />
             </svg>
-                    <span className="text-dark"> 47 Views </span>
+                    <span className="text-dark"> { product?.views ? product?.views : 0} Views </span>
                   </span>
                 </div>
               </div>

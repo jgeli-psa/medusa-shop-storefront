@@ -12,9 +12,11 @@ export default async function AccountPageLayout({
   const customer = await retrieveCustomer().catch(() => null)
 
   return (
+        <section className="overflow-hidden pt-[159px] px-5">
     <AccountLayout customer={customer}>
       {customer ? dashboard : login}
       <Toaster />
     </AccountLayout>
+    </section>
   )
 }

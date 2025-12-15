@@ -6,9 +6,24 @@ import { useAppSelector } from "@/redux/store";
 import SingleItem from "./SingleItem";
 import Breadcrumb from "../Common/Breadcrumb";
 import Link from "next/link";
+import { clearCart } from "@lib/data/cart";
 
-const Cart = () => {
-  const cartItems = useAppSelector((state) => state.cartReducer.items);
+const Cart = ({cart, customer} : any) => {
+
+
+console.log(cart, customer, 'CART D')
+
+
+
+  const cartItems = cart?.items ?? []
+  
+  const handleClearCart = async () => {
+  
+      await clearCart(cart.id)
+  
+  }
+
+
 
   return (
     <>
@@ -22,7 +37,7 @@ const Cart = () => {
           <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
             <div className="flex flex-wrap items-center justify-between gap-5 mb-7.5">
               <h2 className="font-medium text-dark text-2xl">Your Cart</h2>
-              <button className="text-blue">Clear Shopping Cart</button>
+              <button className="text-blue" onClick={() => handleClearCart()}>Clear Shopping Cart</button>
             </div>
 
             <div className="bg-white rounded-[10px] shadow-1">
@@ -62,7 +77,7 @@ const Cart = () => {
 
             <div className="flex flex-col lg:flex-row gap-7.5 xl:gap-11 mt-9">
               <Discount />
-              <OrderSummary />
+              <OrderSummary cart={cart} />
             </div>
           </div>
         </section>

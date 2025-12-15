@@ -11,8 +11,8 @@ type ThumbnailProps = {
   size?: "small" | "medium" | "large" | "full" | "square"
   isFeatured?: boolean
   className?: string
-  height: number
-  width: number
+  height?: number
+  width?: number
   "data-testid"?: string
 }
 

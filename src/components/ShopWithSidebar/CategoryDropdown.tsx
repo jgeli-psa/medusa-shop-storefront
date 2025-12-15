@@ -107,16 +107,7 @@ const CategoryDropdown = ({ categories }: CategoryDropdownProps) => {
 
   return (
   <>
-                    <div className="bg-white shadow-1 rounded-lg py-4 px-5">
-                      <div className="flex items-center justify-between">
-                        <p>Filters:</p>
-                                <Link
-          href={regionCode ? `/${regionCode}/shop` : "/shop"}
-        >
-                        <button className="text-blue">Clear</button>
-                        </Link>
-                      </div>
-                    </div>
+
     <div className="bg-white shadow-1 rounded-lg sticky top-4">
       <div
         onClick={(e) => {

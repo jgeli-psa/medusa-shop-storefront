@@ -21,7 +21,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
           <div>{customer && <AccountNav customer={customer} />}</div>
           <div className="flex-1">{children}</div>
         </div>
-        <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8">
+        <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8 px-5">
           <div>
             <h3 className="text-xl-semi mb-4">Got questions?</h3>
             <span className="txt-medium">
@@ -30,7 +30,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
             </span>
           </div>
           <div>
-            <UnderlineLink href="/customer-service">
+            <UnderlineLink href="/contact">
               Customer Service
             </UnderlineLink>
           </div>

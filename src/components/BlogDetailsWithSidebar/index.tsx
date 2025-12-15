@@ -9,20 +9,27 @@ import { HttpTypes } from "@medusajs/types"
 import Thumbnail from "@modules/products/components/thumbnail";
 import { Text } from "@medusajs/ui";
 import ProductActionForm from "../Blog/ProductActionForm";
+import CategoryDropdown from "../ShopWithSidebar/CategoryDropdown";
 
 type ProductTemplateProps = {
   product?: HttpTypes.StoreProduct | any
   region: HttpTypes.StoreRegion
   countryCode: string
-  images: HttpTypes.StoreProductImage[]
+  customer?: any
+  categories?: any
 }
 
 const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
   product,
   region,
   countryCode,
-  images,
+  customer,
+  categories
 }) => {
+console.log(product, 'PRODUCT FORM')
+
+
+
   return (
     <>
       <Breadcrumb
@@ -41,7 +48,7 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
               <div className="rounded-[10px] overflow-hidden mb-7.5">
                 <Thumbnail
                   thumbnail={product?.thumbnail}
-                  images={product.images}
+                  images={product?.images}
                   size="square"
                   width={750}
                   height={477}
@@ -56,7 +63,7 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
                     product={product}
                     region={region}
                     countryCode={countryCode}
-                    images={images}
+                    customer={customer}
                   />
                 </div>
               </div>
@@ -69,16 +76,16 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
                   </h2>
                   {/* <!-- divider --> */}
                   <span className="block w-px h-4 bg-gray-4"></span>
-              {/*     <span className="text-gray-500 ease-out duration-200">
-                    300k Views
-                  </span> */}
+                <span className="text-gray-500 ease-out duration-200">
+                    {product?.views ? product?.views : 0} Views
+                  </span>
                 </div>
 
                 <Text
                   className="text-medium text-ui-fg-subtle whitespace-pre-line"
                   data-testid="product-description"
                 >
-                  {product.description}
+                  {product?.description}
                 </Text>
 
                 {/* <!-- Additional Product Details --> */}
@@ -104,11 +111,11 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
                 )} */}
 
                 {/* <!-- Product Specifications --> */}
-                {product.variants?.[0]?.options && product.variants[0].options.length > 0 && (
+                {product?.variants?.[0]?.options && product?.variants[0].options.length > 0 && (
                   <div className="mt-6 pt-6 border-t border-gray-3">
                     <h3 className="font-medium text-dark mb-4">Specifications</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {product.variants[0].options.map((option: any) => (
+                      {product?.variants[0].options.map((option: any) => (
                         <div key={option.id} className="flex items-center">
                           <span className="text-sm text-gray-600 mr-2">
                             {option.option?.title || option.option?.value || 'Option'}:
@@ -131,19 +138,21 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
                     product={product}
                     region={region}
                     countryCode={countryCode}
-                    images={images}
                   />
                 </div>
               </div>
 
               {/* <!-- Recent Posts --> */}
-              <LatestPosts blogs={blogData} />
+              <LatestPosts  countryCode={countryCode} categoryId={product?.categories[0].id} productId={product.id}/>
 
               {/* <!-- Latest Products --> */}
-              <LatestProducts products={shopData} />
+              <LatestProducts  countryCode={countryCode} categoryId={product?.categories[0].id}/>
 
               {/* <!-- Popular Categories --> */}
               <div className="shadow-1 bg-white rounded-xl mt-7.5">
+              <CategoryDropdown categories={categories} />
+              </div>
+              {/* <div className="shadow-1 bg-white rounded-xl mt-7.5">
                 <div className="px-4 sm:px-6 py-4.5 border-b border-gray-3">
                   <h2 className="font-medium text-lg text-dark">
                     Popular Category
@@ -174,7 +183,8 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
+
             </div>
           </div>
         </div>

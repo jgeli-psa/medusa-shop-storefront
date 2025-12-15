@@ -14,7 +14,7 @@ import MobileActions from "./mobile-actions"
 import { useRouter } from "next/navigation"
 
 type ProductActionsProps = {
-  product: HttpTypes.StoreProduct
+  product: any
   region: HttpTypes.StoreRegion
   customer?: any
   disabled?: boolean
@@ -32,7 +32,8 @@ const optionsAsKeymap = (
 export default function ProductActions({
   product,
   disabled,
-  customer
+  customer,
+  region
 }: ProductActionsProps) {
   const router = useRouter()
   const pathname = usePathname()
@@ -41,7 +42,6 @@ export default function ProductActions({
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
-console.log(customer, 'cuss')
 let membership = customer?.membership ?? 'nonmember'
 
 
@@ -141,13 +141,17 @@ let membership = customer?.membership ?? 'nonmember'
     
     setIsAdding(false)
   }
+  
+  
+  
+  console.log(region, 'PROD CUSS')
 
   return (
       <div className="flex flex-col w-full justify-center" ref={actionsRef}>
         <div>
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
+              {(product.variants.options || []).map((option) => {
                 return (
                   <div key={option.id}>
                     <OptionSelect
@@ -166,7 +170,7 @@ let membership = customer?.membership ?? 'nonmember'
           )}
         </div>
 
-         <ProductPrice product={product} variant={selectedVariant} membership={membership}/> 
+         <ProductPrice product={product} variant={selectedVariant} membership={membership} currencyCode={region.currency_code}/> 
 
         <Button
           onClick={handleAddToCart}
@@ -198,7 +202,9 @@ let membership = customer?.membership ?? 'nonmember'
           isAdding={isAdding}
           show={!inView}
           optionsDisabled={!!disabled || isAdding}
-        />
+          membership={membership}
+          currencyCode={region.currency_code}
+      />
       </div>
   )
 }

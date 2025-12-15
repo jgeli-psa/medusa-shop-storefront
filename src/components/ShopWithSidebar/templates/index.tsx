@@ -24,8 +24,8 @@ const ShopWithSidebar = ({
 <>
         <Breadcrumb
         title={searchParams ? `Search results: ${searchParams}` : 'Explore Products'}
-        titles={[searchParams]}
-        pages={[`products?q=${searchParams}`]}
+        titles={[searchParams ? searchParams : 'Shop']}
+        pages={[searchParams ? `products?q=${searchParams}` : 'shop']}
       />
       <section className="overflow-hidden relative pb-20 pt-5 lg:pt-10 xl:pt-18 bg-[#f3f4f6]">
         <Suspense fallback={<SkeletonStoreTemplate />}>

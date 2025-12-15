@@ -13,7 +13,7 @@ import { isSimpleProduct } from "@lib/util/product"
 import { formatPrice, calculateDiscount } from "@lib/formatters/prices"
 
 type MobileActionsProps = {
-  product: HttpTypes.StoreProduct
+  product: any
   variant?: HttpTypes.StoreProductVariant
   options: Record<string, string | undefined>
   updateOptions: (title: string, value: string) => void
@@ -23,6 +23,7 @@ type MobileActionsProps = {
   show: boolean
   membership?: "member" | "student" | "nonmember"
   optionsDisabled: boolean
+  currencyCode?: string
 }
 
 const MobileActions: React.FC<MobileActionsProps> = ({
@@ -35,41 +36,54 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   isAdding,
   show,
   optionsDisabled,
-  membership = "nonmember"
+  membership = "nonmember",
+  currencyCode = "AUD"
 }) => {
   const { state, open, close } = useToggleState()
 
   // Extract prices from metadata
   const metadata = product.metadata || {}
+  // Prices in cents
   const prices = {
     nonmember: metadata.nonmember ? Math.round(Number(metadata.nonmember) * 100) : 0,
     member: metadata.member ? Math.round(Number(metadata.member) * 100) : 0,
     student: metadata.student ? Math.round(Number(metadata.student) * 100) : 0,
   }
 
-  // Get base price info from Medusa
-  const price = getProductPrice({
-    product: product,
-    variantId: variant?.id,
-  })
+  // // Get base price info from Medusa
+  // const price = getProductPrice({
+  //   product: product,
+  //   variantId: variant?.id,
+  // })
+  
+    // Determine user's price
+  const userPrice = membership === "member" 
+    ? (prices.member || prices.nonmember)
+    : membership === "student"
+    ? (prices.student || prices.nonmember)
+    : prices.nonmember
 
-  const selectedPrice = useMemo(() => {
-    if (!price) {
-      return null
-    }
-    const { variantPrice, cheapestPrice } = price
-    return variantPrice || cheapestPrice || null
-  }, [price])
+  // const selectedPrice = useMemo(() => {
+  //   if (!price) {
+  //     return null
+  //   }
+  //   const { variantPrice, cheapestPrice } = price
+  //   return variantPrice || cheapestPrice || null
+  // }, [price])
 
   // Determine user's price based on membership
-  const userPrice = useMemo(() => {
-    if (membership === "member") {
-      return prices.member || prices.nonmember
-    } else if (membership === "student") {
-      return prices.student || prices.nonmember
-    }
-    return prices.nonmember
-  }, [membership, prices.member, prices.student, prices.nonmember])
+  // const userPrice = useMemo(() => {
+  //   if (membership === "member") {
+  //     return prices.member || prices.nonmember
+  //   } else if (membership === "student") {
+  //     return prices.student || prices.nonmember
+  //   }
+  //   return prices.nonmember
+  // }, [membership, prices.member, prices.student, prices.nonmember])
+
+  // const userPrice = product?.discountedPrice;
+
+console.log(userPrice, 'USER PRICE')
 
   // Calculate savings
   const savings = useMemo(() => {
@@ -83,8 +97,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   }, [membership, prices.nonmember, userPrice])
 
   const isSimple = isSimpleProduct(product)
-  const currencyCode = selectedPrice?.currency_code || 'AUD'
 
+console.log(product, 'UDS PR', currencyCode)
   return (
     <>
       <div
@@ -115,7 +129,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 <div className="text-right">
                   <div className="flex items-baseline gap-1">
                     <span className="text-xl font-bold text-gray-900">
-                      {formatPrice(userPrice, currencyCode)}
+                      {formatPrice(userPrice)}
                     </span>
                     {savings && (
                       <span className="text-xs text-green-600 font-medium">
@@ -126,7 +140,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   {savings && (
                     <div className="text-xs text-gray-500">
                       <span className="line-through mr-1">
-                        {formatPrice(prices.nonmember, currencyCode)}
+                        {formatPrice(prices.nonmember)}
                       </span>
                       Regular
                     </div>
@@ -181,7 +195,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   ? "Select variant"
                   : !inStock
                   ? "Out of stock"
-                  : `Add to cart - ${formatPrice(userPrice, currencyCode)}`}
+                  : `Add to cart - ${formatPrice(userPrice)}`}
               </Button>
             </div>
           </div>
@@ -228,7 +242,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         <div className="mt-2 space-y-1">
                           <div className="flex items-baseline gap-2">
                             <div className="text-2xl font-bold text-gray-900">
-                              {formatPrice(userPrice, currencyCode)}
+                              {formatPrice(userPrice)}
                             </div>
                             {savings && (
                               <div className="text-sm text-green-600 font-medium">
@@ -240,7 +254,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                           {savings && (
                             <div className="text-sm text-gray-500">
                               <span className="line-through mr-2">
-                                {formatPrice(prices.nonmember, currencyCode)}
+                                {formatPrice(prices.nonmember)}
                               </span>
                               Regular price
                             </div>
@@ -274,7 +288,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         <div className="space-y-1 text-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-gray-600">Regular</span>
-                            <span>{formatPrice(prices.nonmember, currencyCode)}</span>
+                            <span>{formatPrice(prices.nonmember)}</span>
                           </div>
                           
                           {prices.member && (
@@ -283,7 +297,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                             }`}>
                               <span>Member</span>
                               <div className="flex items-center gap-2">
-                                <span>{formatPrice(prices.member, currencyCode)}</span>
+                                <span>{formatPrice(prices.member)}</span>
                                 {prices.nonmember && prices.member < prices.nonmember && (
                                   <span className={`text-xs ${membership === "member" ? "text-green-600" : "text-gray-500"}`}>
                                     saves {formatPrice(prices.nonmember - prices.member)}
@@ -299,7 +313,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                             }`}>
                               <span>Student</span>
                               <div className="flex items-center gap-2">
-                                <span>{formatPrice(prices.student, currencyCode)}</span>
+                                <span>{formatPrice(prices.student)}</span>
                                 {prices.nonmember && prices.student < prices.nonmember && (
                                   <span className={`text-xs ${membership === "student" ? "text-green-600" : "text-gray-500"}`}>
                                     saves {formatPrice(prices.nonmember - prices.student)}
@@ -350,7 +364,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                         ? "Please select options"
                         : !inStock
                         ? "Out of stock"
-                        : `Add to cart - ${formatPrice(userPrice, currencyCode)}`}
+                        : `Add to cart - ${formatPrice(userPrice)}`}
                     </Button>
                   </div>
                 </Dialog.Panel>

@@ -1,210 +1,406 @@
-import React from "react";
+"use client"
 
-const Billing = () => {
+import { setAddresses } from "@lib/data/cart"
+import compareAddresses from "@lib/util/compare-addresses"
+import { CheckCircleSolid } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
+import { useToggleState } from "@medusajs/ui"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useActionState, useState, useEffect } from "react"
+import BillingAddress from "./billing_address"
+import ErrorMessage from "./error-message"
+import ShippingAddress from "./shipping-address"
+import { SubmitButton } from "./submit-button"
+
+const Addresses = ({
+  cart,
+  customer,
+}: {
+  cart: any | null
+  customer: HttpTypes.StoreCustomer | null
+}) => {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const isOpen = searchParams.get("step") === "address"
+  const [dropdown, setDropdown] = useState(true)
+  const [isEditing, setIsEditing] = useState(false)
+  const isCompleted = cart?.shipping_address && cart?.billing_address && cart?.email
+  const isReturningCustomer = !!customer
+  const hasNoAddress = (!cart?.shipping_address?.first_name && !cart?.shipping_address?.last_name)
+  
+  
+  
+  
+  const { state: sameAsBilling, toggle: toggleSameAsBilling } = useToggleState(
+    cart?.shipping_address && cart?.billing_address
+      ? compareAddresses(cart?.shipping_address, cart?.billing_address)
+      : true
+  )
+
+
+
+
+  useEffect(() => {
+      
+        
+  
+  }, [])
+  
+
+  // Auto-collapse when no address and no customer
+  useEffect(() => {
+  
+  
+    if (hasNoAddress && !isReturningCustomer && !isOpen) {
+        // setDropdown(true)
+      // setIsEditing(true)
+      handleEdit()
+    } else if (isOpen) {
+      setDropdown(true)
+      setIsEditing(true)
+    } else if (isCompleted) {
+      setDropdown(true)
+      setIsEditing(false)
+      handleRedirects()
+      
+      
+    } else if (hasNoAddress && isReturningCustomer) {
+      setDropdown(true)
+    }
+  }, [hasNoAddress, isReturningCustomer, isOpen, isCompleted])
+
+
+
+  const handleEdit = () => {
+    setIsEditing(true)
+    setDropdown(true)
+    router.push(pathname + "?step=address")
+  }
+
+  const handleCancelEdit = () => {
+    setIsEditing(false)
+    router.push(pathname)
+  }
+
+  const handleStartNewAddress = () => {
+    setIsEditing(true)
+    setDropdown(true)
+  }
+  
+  
+  const handleRedirects = () => {
+    
+      const paidByGiftcard =
+    cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
+
+  const addressComplete =
+    cart.shipping_address &&
+    cart.shipping_methods.length > 0 
+    
+    const paymentComplete = (cart.payment_collection || paidByGiftcard);
+    
+    if(paymentComplete){
+          router.push(pathname + "?step=" + 'review')
+    } else if(cart.shipping_methods.length > 0){
+          router.push(pathname + "?step=" + 'payment')
+    } else if(cart.shipping_address){
+          router.push(pathname + "?step=" + 'delivery')
+    } else {
+          router.push(pathname + "?step=address")
+    }
+  }
+  
+
+  
+
+  const [message, formAction] = useActionState(setAddresses, null)
+
   return (
-    <div className="mt-9">
-      <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">
-        Billing details
-      </h2>
-
-      <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
-        <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 mb-5">
-          <div className="w-full">
-            <label htmlFor="firstName" className="block mb-2.5">
-              First Name <span className="text-red">*</span>
-            </label>
-
-            <input
-              type="text"
-              name="firstName"
-              id="firstName"
-              placeholder="Jhon"
-              className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-            />
-          </div>
-
-          <div className="w-full">
-            <label htmlFor="lastName" className="block mb-2.5">
-              Last Name <span className="text-red">*</span>
-            </label>
-
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder="Deo"
-              className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-            />
-          </div>
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="companyName" className="block mb-2.5">
-            Company Name
-          </label>
-
-          <input
-            type="text"
-            name="companyName"
-            id="companyName"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="countryName" className="block mb-2.5">
-            Country/ Region
-            <span className="text-red">*</span>
-          </label>
-
-          <div className="relative">
-            <select className="w-full bg-gray-1 rounded-md border border-gray-3 text-dark-4 py-3 pl-5 pr-9 duration-200 appearance-none outline-none focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20">
-              <option value="0">Australia</option>
-              <option value="1">America</option>
-              <option value="2">England</option>
-            </select>
-
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-dark-4">
-              <svg
-                className="fill-current"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.41469 5.03569L2.41467 5.03571L2.41749 5.03846L7.76749 10.2635L8.0015 10.492L8.23442 10.2623L13.5844 4.98735L13.5844 4.98735L13.5861 4.98569C13.6809 4.89086 13.8199 4.89087 13.9147 4.98569C14.0092 5.08024 14.0095 5.21864 13.9155 5.31345C13.9152 5.31373 13.915 5.31401 13.9147 5.31429L8.16676 10.9622L8.16676 10.9622L8.16469 10.9643C8.06838 11.0606 8.02352 11.0667 8.00039 11.0667C7.94147 11.0667 7.89042 11.0522 7.82064 10.9991L2.08526 5.36345C1.99127 5.26865 1.99154 5.13024 2.08609 5.03569C2.18092 4.94086 2.31986 4.94086 2.41469 5.03569Z"
-                  fill=""
-                  stroke=""
-                  stroke-width="0.666667"
-                />
-              </svg>
+    <div className="bg-white shadow-1 rounded-[10px]">
+      {/* Collapsible Header */}
+      <div
+        onClick={() => {
+          if (!isEditing) {
+            setDropdown(!dropdown)
+          }
+        }}
+        className={`flex items-center justify-between py-5 px-5.5 ${
+          dropdown && "border-b border-gray-3"
+        } ${isEditing ? "" : "cursor-pointer"}`}
+      >
+        <div className="flex items-center gap-3">
+          <span className="font-medium text-dark text-lg">
+            Address Information
+          </span>
+          {isCompleted && !isEditing && (
+            <span className="flex items-center gap-1 text-green-600 text-sm bg-green-50 px-2.5 py-1 rounded-full">
+              <CheckCircleSolid className="w-4 h-4" />
+              <span>Completed</span>
             </span>
-          </div>
+          )}
+          {!isReturningCustomer && !isCompleted && !isEditing && (
+            <span className="text-sm text-dark-5">
+              or{" "}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  router.push("/account")
+                }}
+                className="text-blue hover:text-blue-dark font-medium underline"
+              >
+                click here to login
+              </button>
+            </span>
+          )}
         </div>
-
-        <div className="mb-5">
-          <label htmlFor="address" className="block mb-2.5">
-            Street Address
-            <span className="text-red">*</span>
-          </label>
-
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="House number and street name"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-
-          <div className="mt-5">
-            <input
-              type="text"
-              name="address"
-              id="addressTwo"
-              placeholder="Apartment, suite, unit, etc. (optional)"
-              className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-            />
-          </div>
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="town" className="block mb-2.5">
-            Town/ City <span className="text-red">*</span>
-          </label>
-
-          <input
-            type="text"
-            name="town"
-            id="town"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="country" className="block mb-2.5">
-            Country
-          </label>
-
-          <input
-            type="text"
-            name="country"
-            id="country"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-        </div>
-
-        <div className="mb-5">
-          <label htmlFor="phone" className="block mb-2.5">
-            Phone <span className="text-red">*</span>
-          </label>
-
-          <input
-            type="text"
-            name="phone"
-            id="phone"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-        </div>
-
-        <div className="mb-5.5">
-          <label htmlFor="email" className="block mb-2.5">
-            Email Address <span className="text-red">*</span>
-          </label>
-
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="checkboxLabelTwo"
-            className="text-dark flex cursor-pointer select-none items-center"
-          >
-            <div className="relative">
-              <input
-                type="checkbox"
-                id="checkboxLabelTwo"
-                className="sr-only"
+        <div className="flex items-center gap-3">
+          {!dropdown && cart?.shipping_address && !isEditing && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleEdit()
+              }}
+              className="text-blue hover:text-blue-dark text-sm font-medium px-3 py-1.5 rounded-md hover:bg-blue/5"
+            >
+              Edit
+            </button>
+          )}
+          {(!hasNoAddress && isEditing) && (
+            <button
+              onClick={handleCancelEdit}
+              className="text-dark-5 hover:text-dark text-sm font-medium px-3 py-1.5 rounded-md hover:bg-gray-2"
+            >
+              Cancel
+            </button>
+          )}
+          {!isEditing && (
+            <svg
+              className={`${
+                dropdown ? "rotate-180" : ""
+              } fill-current ease-out duration-200 text-dark-4`}
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.06103 7.80259C4.30813 7.51431 4.74215 7.48092 5.03044 7.72802L10.9997 12.8445L16.9689 7.72802C17.2572 7.48092 17.6912 7.51431 17.9383 7.80259C18.1854 8.09088 18.1521 8.5249 17.8638 8.772L11.4471 14.272C11.1896 14.4927 10.8097 14.4927 10.5523 14.272L4.1356 8.772C3.84731 8.5249 3.81393 8.09088 4.06103 7.80259Z"
+                fill="currentColor"
               />
-              <div className="mr-2 flex h-4 w-4 items-center justify-center rounded border border-gray-4">
-                <span className="opacity-0">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="4"
-                      y="4.00006"
-                      width="16"
-                      height="16"
-                      rx="4"
-                      fill="#3C50E0"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M16.3103 9.25104C16.471 9.41178 16.5612 9.62978 16.5612 9.85707C16.5612 10.0844 16.471 10.3024 16.3103 10.4631L12.0243 14.7491C11.8635 14.9098 11.6455 15.0001 11.4182 15.0001C11.191 15.0001 10.973 14.9098 10.8122 14.7491L8.24062 12.1775C8.08448 12.0158 7.99808 11.7993 8.00003 11.5745C8.00199 11.3498 8.09214 11.1348 8.25107 10.9759C8.41 10.8169 8.62499 10.7268 8.84975 10.7248C9.0745 10.7229 9.29103 10.8093 9.4527 10.9654L11.4182 12.931L15.0982 9.25104C15.2589 9.09034 15.4769 9.00006 15.7042 9.00006C15.9315 9.00006 16.1495 9.09034 16.3103 9.25104Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
-              </div>
-            </div>
-            Create an Account
-          </label>
+            </svg>
+          )}
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Billing;
+      {/* Collapsible Content */}
+      <div
+        className={`${
+          dropdown ? "block" : "hidden"
+        } pt-7.5 pb-8.5 px-4 sm:px-8.5`}
+      >
+        {hasNoAddress && !isReturningCustomer && !isEditing ? (
+          // Empty state for guest users with no address
+          <div className="text-center py-8">
+            <div className="text-dark-5 mb-4">
+              No address information provided yet.
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => router.push("/account")}
+                className="py-2.5 px-6 rounded-md font-medium transition-all duration-200 bg-blue text-white hover:bg-blue-dark"
+              >
+                Login to Continue
+              </button>
+              <button
+                onClick={handleStartNewAddress}
+                className="py-2.5 px-6 rounded-md font-medium transition-all duration-200 bg-gray-1 border border-gray-3 text-dark hover:bg-gray-2"
+              >
+                Enter Address as Guest
+              </button>
+            </div>
+          </div>
+        ) : (isEditing || !isCompleted) ? (
+          // Edit form or new address form
+          <>
+            {isReturningCustomer && customer.addresses?.length > 0 && !isEditing ? (
+              <div className="mb-6">
+                <p className="text-dark mb-4">
+                  Hi {customer.first_name}, do you want to use one of your saved addresses?
+                </p>
+                <div className="text-sm text-dark-5 mb-6">
+                  <button
+                    onClick={() => {
+                      // Logic to show saved addresses
+                    }}
+                    className="text-blue hover:text-blue-dark font-medium"
+                  >
+                    Choose from saved addresses
+                  </button>
+                  {" or "}
+                  <button
+                    onClick={handleStartNewAddress}
+                    className="text-blue hover:text-blue-dark font-medium"
+                  >
+                    enter new address
+                  </button>
+                </div>
+              </div>
+            ) : !isReturningCustomer && !isEditing ? (
+              <div className="mb-6 p-4 bg-gray-1 rounded-lg border border-gray-3">
+                <p className="text-dark mb-2">
+                  Returning customer?
+                </p>
+                <p className="text-sm text-dark-5 mb-3">
+                  Login to access your saved addresses and faster checkout.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={() => router.push("/account")}
+                    className="py-2 px-4 rounded-md font-medium transition-all duration-200 bg-blue text-white hover:bg-blue-dark text-sm"
+                  >
+                    Click here to login
+                  </button>
+                  <div className="flex items-center gap-2 text-sm text-dark-5">
+                    <span className="hidden sm:inline">or</span>
+                    <button
+                      onClick={handleStartNewAddress}
+                      className="text-blue hover:text-blue-dark font-medium"
+                    >
+                      enter new address
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            {(isEditing || (hasNoAddress && isReturningCustomer)) && (
+              <form action={formAction}>
+                <ShippingAddress
+                  customer={customer}
+                  checked={sameAsBilling}
+                  onChange={toggleSameAsBilling}
+                  cart={cart}
+                />
+
+                {!sameAsBilling && (
+                  <div className="mt-8 pt-8 border-t border-gray-3">
+                    <h3 className="font-medium text-dark text-lg mb-6">
+                      Billing Address
+                    </h3>
+                    <BillingAddress cart={cart} />
+                  </div>
+                )}
+
+                <div className="mt-8 pt-8 border-t border-gray-3 flex gap-3">
+                  <SubmitButton 
+                    data-testid="submit-address-button"
+                    className="w-full sm:w-auto" 
+
+                  >
+                    {hasNoAddress ? "Save Address & Continue" : "Save Changes"}
+                  </SubmitButton>
+                  {!hasNoAddress && <button
+                    type="button"
+                    onClick={handleCancelEdit}
+                    className="py-3 px-8 rounded-lg font-medium transition-all duration-200 bg-gray-1 border border-gray-3 text-dark hover:bg-gray-2"
+                  >
+                    Cancel
+                  </button>}
+                </div>
+                <ErrorMessage 
+                  error={message} 
+                  data-testid="address-error-message" 
+                  className="mt-4"
+                />
+              </form>
+            )}
+          </>
+        ) : (
+          // Completed address summary view
+          <div className="pt-2">
+            {cart && cart.shipping_address ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gray-1 p-5 rounded-lg">
+                  <h3 className="font-medium text-dark text-lg mb-4">
+                    Shipping Address
+                  </h3>
+                  <div className="space-y-2 text-dark-5">
+                    <p className="font-medium">
+                      {cart.shipping_address.first_name}{" "}
+                      {cart.shipping_address.last_name}
+                    </p>
+                    <p>{cart.shipping_address.address_1}</p>
+                    {cart.shipping_address.address_2 && (
+                      <p>{cart.shipping_address.address_2}</p>
+                    )}
+                    <p>
+                      {cart.shipping_address.city}, {cart.shipping_address.postal_code}
+                    </p>
+                    <p className="font-medium">
+                      {cart.shipping_address.country_code?.toUpperCase()}
+                    </p>
+                    {cart.shipping_address.phone && (
+                      <p className="mt-3">📞 {cart.shipping_address.phone}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-gray-1 p-5 rounded-lg">
+                  <h3 className="font-medium text-dark text-lg mb-4">
+                    Contact Information
+                  </h3>
+                  <div className="space-y-2 text-dark-5">
+                    <p className="font-medium">Email</p>
+                    <p>{cart.email}</p>
+                    
+                    <div className="mt-6">
+                      <h4 className="font-medium text-dark mb-3">
+                        Billing Address
+                      </h4>
+                      {sameAsBilling ? (
+                        <p className="text-dark-5">
+                          Same as shipping address
+                        </p>
+                      ) : (
+                        <div className="space-y-2">
+                          <p className="font-medium">
+                            {cart.billing_address?.first_name}{" "}
+                            {cart.billing_address?.last_name}
+                          </p>
+                          <p>{cart.billing_address?.address_1}</p>
+                          <p>
+                            {cart.billing_address?.city},{" "}
+                            {cart.billing_address?.postal_code}
+                          </p>
+                          <p className="font-medium">
+                            {cart.billing_address?.country_code?.toUpperCase()}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+            
+            <div className="mt-8 pt-8 border-t border-gray-3">
+              <button
+                onClick={handleEdit}
+                className="text-blue hover:text-blue-dark font-medium py-2 px-4 rounded-md hover:bg-blue/5"
+              >
+                Edit Address Information
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Addresses

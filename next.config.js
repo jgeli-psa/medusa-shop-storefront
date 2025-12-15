@@ -48,7 +48,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "alishia-portly-serendipitously.ngrok-free.app",
+        hostname: "https://large-roof-enlarge.medusajs.app",
       },
       ...(S3_HOSTNAME && S3_PATHNAME
         ? [

@@ -18,6 +18,7 @@ import { HttpTypes } from "@medusajs/types"
 import { isEqual } from "lodash"
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
 import { FormattedProduct } from "@lib/formatters/product-formatter";
+import { viewProduct } from "@lib/data/products";
 
 
 type ProductActionsProps = {
@@ -65,70 +66,12 @@ const SingleGridItem = ({ item, region }: { item: any, region?: any }) => {
     })
   }, [item.variants, options])
 
-  // update the options when a variant is selected
-  const setOptionValue = (optionId: string, value: string) => {
-    setOptions((prev) => ({
-      ...prev,
-      [optionId]: value,
-    }))
-  }
 
-  //check if the selected options produce a valid variant
-  const isValidVariant = useMemo(() => {
-    return item.variants?.some((v) => {
-      const variantOptions = optionsAsKeymap(v.options)
-      return isEqual(variantOptions, options)
-    })
-  }, [item.variants, options])
-
-  // useEffect(() => {
-  //   const params = new URLSearchParams(searchParams.toString())
-  //   const value = isValidVariant ? selectedVariant?.id : null
-
-  //   if (params.get("v_id") === value) {
-  //     return
-  //   }
-
-  //   if (value) {
-  //     params.set("v_id", value)
-  //   } else {
-  //     params.delete("v_id")
-  //   }
-
-  //   router.replace(pathname + "?" + params.toString())
-  // }, [selectedVariant, isValidVariant])
-
-  // check if the selected variant is in stock
-  const inStock = useMemo(() => {
-    // If we don't manage inventory, we can always add to cart
-    if (selectedVariant && !selectedVariant.manage_inventory) {
-      return true
-    }
-
-    // If we allow back orders on the variant, we can add to cart
-    if (selectedVariant?.allow_backorder) {
-      return true
-    }
-
-    // If there is inventory available, we can add to cart
-    if (
-      selectedVariant?.manage_inventory &&
-      (selectedVariant?.inventory_quantity || 0) > 0
-    ) {
-      return true
-    }
-
-    // Otherwise, we can't add to cart
-    return false
-  }, [selectedVariant])
-
-  const actionsRef = useRef<HTMLDivElement>(null)
-
-  const inView = useIntersection(actionsRef, "0px")
 
 
   // update the QuickView state
-  const handleQuickViewUpdate = () => {
+  const handleQuickViewUpdate = async () => {
+    await viewProduct(item?.id);
     dispatch(updateQuickView({ ...item }));
   };
 
@@ -143,29 +86,10 @@ const SingleGridItem = ({ item, region }: { item: any, region?: any }) => {
       quantity: 1,
       countryCode,
     })
-    
-    
-    
     setIsAdding(false)
- 
-    // dispatch(
-    //   addItemToCart({
-    //     ...item,
-    //     quantity: 1,
-    //   })
-    // );
-  
   };
 
-  const handleItemToWishList = () => {
-    dispatch(
-      addItemToWishlist({
-        ...item,
-        status: "available",
-        quantity: 1,
-      })
-    );
-  };
+
 
   return (
     <div className="group">
@@ -272,7 +196,7 @@ const SingleGridItem = ({ item, region }: { item: any, region?: any }) => {
       </h3>
       <span className="flex items-center gap-2 font-medium text-lg">
         <span className="text-dark">${item.discountedPrice}</span>
-       {item.discountable && <span className="text-dark-4 line-through">${item.price}</span>}
+       {(item.discountable && item.price > item.discountedPrice) && <span className="text-dark-4 line-through">${item.price}</span>}
       </span>
     </div>
   );

@@ -11,8 +11,13 @@ import shopData from "../Shop/shopData";
 import SingleGridItem from "../Shop/SingleGridItem";
 import SingleListItem from "../Shop/SingleListItem";
 import { Pagination } from "@modules/store/components/pagination";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const StoreTemplate = ({products, page, totalPages, categories} : any) => {
+  const params = useParams();
+  const regionCode = params?.region as string || "";
+  
   const [productStyle, setProductStyle] = useState("grid");
   const [productSidebar, setProductSidebar] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
@@ -25,28 +30,7 @@ const StoreTemplate = ({products, page, totalPages, categories} : any) => {
     }
   };
 
-  const options = [
-    { label: "Latest Products", value: "0" },
-    { label: "Best Selling", value: "1" },
-    { label: "Old Products", value: "2" },
-  ];
 
-
-
-  const genders = [
-    {
-      name: "Men",
-      products: 10,
-    },
-    {
-      name: "Women",
-      products: 23,
-    },
-    {
-      name: "Unisex",
-      products: 8,
-    },
-  ];
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyMenu);
@@ -70,7 +54,7 @@ const StoreTemplate = ({products, page, totalPages, categories} : any) => {
 
   let shopData = [] as any; 
 shopData = products ? products : [];
-
+console.log(shopData)
   return (
     <>
 
@@ -119,7 +103,16 @@ shopData = products ? products : [];
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-6">
                   {/* <!-- filter box --> */}
-
+                    <div className="bg-white shadow-1 rounded-lg py-4 px-5">
+                      <div className="flex items-center justify-between">
+                        <p>Filters:</p>
+                                <Link
+                                href={regionCode ? `/${regionCode}/shop` : "/shop"}
+                              >
+                        <button className="text-blue">Clear</button>
+                        </Link>
+                      </div>
+                    </div>
 
                   {/* <!-- category box --> */}
                   <CategoryDropdown categories={categories} />

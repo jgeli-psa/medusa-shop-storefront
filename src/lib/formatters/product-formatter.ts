@@ -52,8 +52,13 @@ let discount_price = product.metadata[membership] as any;
     img.metadata?.purpose === 'thumbnail'
   ) || product.images?.[0]
 
+
   // Get all images
   const allImages = product.images?.map(img => img.url) || []
+  
+  
+console.log(product.images, 'PRODUCT DATA')
+  
   
   // Split images into thumbnails and previews based on metadata or size
   const thumbnails = product.images
@@ -91,22 +96,22 @@ let discount_price = product.metadata[membership] as any;
   
   const discountedPrice = hasDiscount ? discount_price : originalPrice
   // Get review count from metadata or default to 0
-  const reviews = product.metadata?.review_count || 
-                  product.metadata?.reviews || 0 as any
+  const views = product.metadata?.views || 0 as any
 
-  
+    
 
   return {
      ...product,
     id: product.id,
     title: product.title || "",
     description: product.description || product.subtitle || null,
-    reviews: typeof reviews === 'number' ? reviews : parseInt(reviews) || 0,
+    views: typeof views === 'number' ? views : parseInt(views) || 0,
     price: originalPrice,
     discountedPrice: discountedPrice || 0,
     originalPrice: standard_price,
     img: thumbnailImage?.url || product.thumbnail || "",
-    images: allImages,
+    images: product.images,
+    thumbnail: product.images[0] ? product.images[0].url : null,
     imgs: {
       thumbnails: thumbnails.length > 0 ? thumbnails : allImages.slice(0, 3),
       previews: previews.length > 0 ? previews : allImages
@@ -114,10 +119,10 @@ let discount_price = product.metadata[membership] as any;
     sku: product.variants[0].sku,
     category: product.categories[0] ? product.categories[0].name : null,
     variants: product.variants?.map(variant => ({
+      ...variant,
       id: variant.id,
       title: variant.title || product.title || "",
-      price: firstVariant?.prices[0].amount || standard_price || 0,
-      options:  []
+      price: firstVariant?.prices[0].amount || standard_price || 0
     })),
     categories: product.categories,
     tags: product.tags?.map(tag => ({
@@ -194,7 +199,7 @@ export const formatPrice = (amount: number, currencyCode: string = "USD"): strin
     currency: currencyCode,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
-  }).format(amount / 100) // Medusa stores prices in cents
+  }).format(amount) // Medusa stores prices in cents
 }
 
 // Image URL formatter helper

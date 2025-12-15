@@ -5,12 +5,11 @@ import Image from "next/image";
 import DeleteButton from "@modules/common/components/delete-button";
 import Thumbnail from "@modules/products/components/thumbnail";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
+import { useCartModalContext } from "@lib/context/CartSidebarModalContext";
 
-const SingleItem = ({ item, removeItemFromCart }) => {
-  const dispatch = useDispatch<AppDispatch>();
+const SingleItem = ({ item }) => {
+  const {  closeCartModal } = useCartModalContext();
 
-
-  
   
 
   return (
@@ -20,18 +19,19 @@ const SingleItem = ({ item, removeItemFromCart }) => {
           {/* <Image src={item.imgs?.thumbnails[0]} alt="product" width={100} height={100} /> */}
           <Thumbnail
             thumbnail={item?.thumbnail}
-            images={item.images}
+            images={item?.images}
             size="square"
           />
           </div>
 
         <div>
           <h3 className="font-medium text-dark mb-1 ease-out duration-200 hover:text-blue">
-               <LocalizedClientLink href={`/products/${item.handle}`} >
+               <LocalizedClientLink href={`/products/${item.product_handle}`} onClick={() => closeCartModal()} >
                {item.title}
                </LocalizedClientLink>
           </h3>
-          <p className="text-custom-sm">Price: ${item.discountedPrice}</p>
+          <p className="text-custom-sm">Price: ${item.unit_price}</p>
+          <p className="text-custom-sm">Qty: {item.quantity}</p>
         </div>
       </div>
             <DeleteButton id={item.id} data-testid="product-delete-button" />

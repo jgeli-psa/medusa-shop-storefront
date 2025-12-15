@@ -50,6 +50,62 @@ export async function retrieveCart(cartId?: string, fields?: string) {
     .catch(() => null)
 }
 
+export async function clearCart(cartId?: string, fields?: string) {
+  const id = cartId || (await getCartId())
+
+  if (!id) {
+    return null
+  }
+
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("carts")),
+  }
+  
+  
+  let cart = await sdk.client
+      .fetch<HttpTypes.StoreCartResponse>(`/store/carts/${id}`, {
+      method: "GET",
+      query: {
+        fields
+      },
+      headers,
+      next,
+      cache: "force-cache",
+    })
+    .then(({ cart }: { cart: HttpTypes.StoreCart }) => cart)
+    .catch(() => null)
+  
+     if(cart?.items && cart.items[0]){
+     
+         // Remove all items
+    const deletePromises = cart.items.map(item =>
+      sdk.store.cart.deleteLineItem(id, item.id)
+    )           
+           
+    await Promise.all(deletePromises)
+        const cartCacheTag = await getCacheTag("carts")
+      revalidateTag(cartCacheTag)
+
+      const fulfillmentCacheTag = await getCacheTag("fulfillment")
+      revalidateTag(fulfillmentCacheTag)
+  
+           
+     }
+     
+
+    
+  console.log(cart, 'ACTIVE CART')
+  
+
+  
+
+  return cart
+}
+
 export async function getOrSetCart(countryCode: string) {
   const region = await getRegion(countryCode)
 

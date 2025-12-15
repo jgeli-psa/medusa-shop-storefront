@@ -8,6 +8,7 @@ import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
 import { formatProducts } from "@lib/formatters/product-formatter"
 import { retrieveCustomer, retrieveCustomerById } from "./customer"
+import medusaError from "@lib/util/medusa-error"
 
 export const listProducts = async ({
   pageParam = 1,
@@ -20,7 +21,7 @@ export const listProducts = async ({
   countryCode?: string
   regionId?: string
 }): Promise<{
-  response: { products: HttpTypes.StoreProduct[]; count: number }
+  response: { products: any; count: number }
   nextPage: number | null
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductListParams
 }> => {
@@ -46,6 +47,9 @@ export const listProducts = async ({
       nextPage: null,
     }
   }
+
+
+
 
   const headers = {
     ...(await getAuthHeaders()),
@@ -83,18 +87,9 @@ export const listProducts = async ({
     query.collection_id = queryParams.collection_id
   }
  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   return sdk.client
-    .fetch<{ products: HttpTypes.StoreProduct[]; count: number }>(
+    .fetch<{ products: any; count: number }>(
       `/store/products`,
       {
         method: "GET",
@@ -116,7 +111,7 @@ export const listProducts = async ({
 
       return {
         response: {
-          products,
+          products: products,
           count,
         },
         nextPage: nextPage,
@@ -156,11 +151,14 @@ export const listProductsWithSort = async ({
     },
     countryCode,
   })
-  
-  
+  console.log(queryParams, 'QURR')
+
   const customer = await retrieveCustomer();
-  const customerData = await retrieveCustomerById(customer?.id);
+  let customerData = {};
   
+  if(customer?.id){
+    customerData = await retrieveCustomerById(customer?.id);
+  }
 
   const sortedProducts = sortProducts(products, sortBy)
 
@@ -169,7 +167,7 @@ export const listProductsWithSort = async ({
   const nextPage = count > pageParam + limit ? pageParam + limit : null
 
   const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
-  
+  console.log(paginatedProducts, 'PAGINATED PRODDUCTS', countryCode)
   return {
     response: {
       products: formatProducts(paginatedProducts, customerData),
@@ -178,4 +176,38 @@ export const listProductsWithSort = async ({
     nextPage,
     queryParams,
   }
+}
+
+
+
+
+/**
+ * Retrieve store details
+ */
+export const viewProduct = async (id: any) => {
+  
+    const authHeaders = await getAuthHeaders()
+
+    if (!authHeaders) return null
+
+    const headers = {
+      ...authHeaders,
+    }
+
+    const next = {
+      ...(await getCacheOptions('products')),
+    }
+
+  
+
+  return sdk.client
+    .fetch<{ store: any }>(`/store/view/${id}`, {
+      method: "GET",
+      headers,
+      next,
+      cache: "force-cache",
+    })
+    .then((data) => data)
+    .catch(medusaError)
+    
 }
