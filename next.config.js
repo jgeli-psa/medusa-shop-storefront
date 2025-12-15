@@ -48,17 +48,21 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://large-roof-enlarge.medusajs.app",
+        hostname: "large-roof-enlarge.medusajs.app",
       },
-      ...(S3_HOSTNAME && S3_PATHNAME
-        ? [
-            {
-              protocol: "https",
-              hostname: S3_HOSTNAME,
-              pathname: S3_PATHNAME,
-            },
-          ]
-        : []),
+      {
+      protocol: "https",
+      hostname: "s3.ap-southeast-1.amazonaws.com"
+      }
+      // ...(S3_HOSTNAME && S3_PATHNAME
+      //   ? [
+      //       {
+      //         protocol: "https",
+      //         hostname: S3_HOSTNAME,
+      //         pathname: S3_PATHNAME,
+      //       },
+      //     ]
+      //   : []),
     ],
   },
 }
