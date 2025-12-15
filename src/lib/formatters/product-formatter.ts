@@ -39,10 +39,10 @@ export const formatProduct = (product: HttpTypes.StoreProduct | any, customer: a
   // Get the first variant for pricing
   
 let standard_price = product.metadata['nonmember'] as any;
-const membership = customer?.groups ? customer.groups[0].name : "nonmember"  
+const membership = customer?.groups ? customer.groups[0]?.name : "nonmember"  
 let discount_price = product.metadata[membership] as any;
   const firstVariant = product.variants?.[0] as any;
-  const originalPrice = firstVariant?.prices[0].amount || discount_price
+  const originalPrice = firstVariant?.prices[0]?.amount || discount_price
 
   
   

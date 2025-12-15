@@ -45,9 +45,9 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   const metadata = product.metadata || {}
   // Prices in cents
   const prices = {
-    nonmember: metadata.nonmember ? Math.round(Number(metadata.nonmember) * 100) : 0,
-    member: metadata.member ? Math.round(Number(metadata.member) * 100) : 0,
-    student: metadata.student ? Math.round(Number(metadata.student) * 100) : 0,
+    nonmember: metadata.nonmember ? Number(metadata.nonmember) : 0,
+    member: metadata.member ? Number(metadata.member) : 0,
+    student: metadata.student ? Number(metadata.student) : 0,
   }
 
   // // Get base price info from Medusa
