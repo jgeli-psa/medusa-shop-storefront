@@ -39,7 +39,7 @@ const LatestProducts = async ({ productId, countryCode, categoryId }: any) => {
 
               <div>
                 <h3 className="font-medium text-dark mb-1 ease-out duration-200 hover:text-blue">
-                  <Link href="/shop-details"> {product.title} </Link>
+                  <Link href={`/products/${product.handle}`}> {product.title} </Link>
                 </h3>
                 <p className="text-custom-sm">Price: ${product.price}</p>
               </div>  

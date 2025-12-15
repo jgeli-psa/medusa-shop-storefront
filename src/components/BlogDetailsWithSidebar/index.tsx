@@ -26,7 +26,6 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
   customer,
   categories
 }) => {
-console.log(product, 'PRODUCT FORM')
 
 
 

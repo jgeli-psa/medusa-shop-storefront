@@ -150,28 +150,31 @@ export async function signup(_currentState: unknown, formData: FormData) {
   }
 }
 
-export async function login(_currentState: unknown, formData: FormData) {
+export async function login(formData: FormData) {
   const email = formData.get("email") as string
   const password = formData.get("password") as string
 
   try {
-    await sdk.auth
-      .login("customer", "emailpass", { email, password })
-      .then(async (token) => {
-        await setAuthToken(token as string)
-        const customerCacheTag = await getCacheTag("customers")
-        revalidateTag(customerCacheTag)
-      })
-  } catch (error: any) {
-    return error.toString()
-  }
+    const token = await sdk.auth.login("customer", "emailpass", { email, password })
+    await setAuthToken(token as string)
 
-  try {
-    await transferCart()
+    const customerCacheTag = await getCacheTag("customers")
+    revalidateTag(customerCacheTag)
+
+    try {
+      await transferCart()
+    } catch (cartError: any) {
+      console.error("Cart transfer failed:", cartError)
+      // Optionally: don't throw, just log
+    }
+
+    return { success: true }
   } catch (error: any) {
-    return error.toString()
+    // Throw the error so the calling component can catch it
+    throw new Error(error?.message || "Login failed")
   }
 }
+
 
 export async function signout(countryCode: string) {
   await sdk.auth.logout()
