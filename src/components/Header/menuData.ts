@@ -5,8 +5,8 @@ export const menuData: Menu[] = [
     id: 1,
     title: "Home",
     newTab: false,
-    // path: "https://www.psa.org.au",
-    path: "/store",
+    path: "https://www.psa.org.au",
+    // path: "/store",
   },
   {
     id: 2,
