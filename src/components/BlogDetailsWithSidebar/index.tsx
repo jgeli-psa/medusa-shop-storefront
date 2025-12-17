@@ -29,12 +29,14 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
 
 
 
+console.log(product, 'product2')
+
   return (
     <>
       <Breadcrumb
         title={[product?.title]}
-        titles={[product?.categories[0].name, product?.title]}
-        pages={[`/categories/${product?.categories[0].handle}`, `/products/${product?.handle}`]}
+        titles={[product?.categories[0]?.name, product?.title]}
+        pages={[`/categories/${product?.categories[0]?.handle}`, `/products/${product?.handle}`]}
       />
       
       <section className="overflow-hidden py-20 bg-gray-2">
@@ -142,10 +144,10 @@ const ProductDetailsPage: React.FC<ProductTemplateProps> = ({
               </div>
 
               {/* <!-- Recent Posts --> */}
-              <LatestPosts  countryCode={countryCode} categoryId={product?.categories[0].id} productId={product.id}/>
+              <LatestPosts  countryCode={countryCode} categoryId={product?.categories[0]?.id} productId={product?.id}/>
 
               {/* <!-- Latest Products --> */}
-              <LatestProducts  countryCode={countryCode} categoryId={product?.categories[0].id}/>
+              <LatestProducts  countryCode={countryCode} categoryId={product?.categories[0]?.id}/>
 
               {/* <!-- Popular Categories --> */}
               <div className="shadow-1 bg-white rounded-xl mt-7.5">

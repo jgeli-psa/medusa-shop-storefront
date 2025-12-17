@@ -54,7 +54,9 @@ const StoreTemplate = ({products, page, totalPages, categories} : any) => {
 
   let shopData = [] as any; 
 shopData = products ? products : [];
-console.log(shopData)
+
+
+console.log(shopData, 'SHOP DATA')
   return (
     <>
 

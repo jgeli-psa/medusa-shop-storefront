@@ -17,7 +17,6 @@ const ProductActionForm: React.FC<ProductTemplateProps> = ({
   region,
   customer
 }) => {
-console.log(product, 'PRODUCT FORMER ')
 
   return (
     <div className="flex justify-center items-center shadow-1 bg-white rounded-xl px-5 py-5">

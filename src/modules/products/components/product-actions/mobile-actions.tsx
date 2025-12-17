@@ -83,7 +83,6 @@ const MobileActions: React.FC<MobileActionsProps> = ({
 
   // const userPrice = product?.discountedPrice;
 
-console.log(userPrice, 'USER PRICE')
 
   // Calculate savings
   const savings = useMemo(() => {
@@ -98,7 +97,6 @@ console.log(userPrice, 'USER PRICE')
 
   const isSimple = isSimpleProduct(product)
 
-console.log(product, 'UDS PR', currencyCode)
   return (
     <>
       <div

@@ -129,7 +129,6 @@ export default async function ProductPage(props: Props) {
 
       let categories = await listCategories();
     
-
   return (
   <>
       <BlogDetailsWithSidebar

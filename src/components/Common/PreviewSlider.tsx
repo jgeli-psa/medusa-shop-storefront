@@ -25,7 +25,6 @@ const PreviewSliderModal = () => {
     sliderRef.current.swiper.slideNext();
   }, []);
   
-  console.log(data, 'DATA')
 
   return (
     <div

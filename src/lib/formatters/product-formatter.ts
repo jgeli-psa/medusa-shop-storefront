@@ -57,7 +57,6 @@ let discount_price = product.metadata[membership] as any;
   const allImages = product.images?.map(img => img.url) || []
   
   
-console.log(product.images, 'PRODUCT DATA')
   
   
   // Split images into thumbnails and previews based on metadata or size

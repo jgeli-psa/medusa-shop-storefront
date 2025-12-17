@@ -31,7 +31,6 @@ export default async function ProductActionsWrapper({
     return null
   }
 
-console.log(formatProduct(product, customerData), customerData, customer, 'WRAPPER')
 
   return <ProductActions 
   product={formatProduct(product, customerData)}

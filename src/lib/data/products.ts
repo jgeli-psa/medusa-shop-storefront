@@ -96,7 +96,8 @@ export const listProducts = async ({
         query: {
           limit,
           offset,
-          region_id: region?.id,
+          region_id: region.id,
+          country_code: region?.countries ? region?.countries[0]?.iso_2 : countryCode,
           fields:
             "*variants.calculated_price,+variants.inventory_quantity,*variants.images,*variants.prices,+metadata,+tags,*categories",
           ...queryParams,
@@ -108,7 +109,6 @@ export const listProducts = async ({
     )
     .then(({ products, count }) => {
       const nextPage = count > offset + limit ? pageParam + 1 : null
-
       return {
         response: {
           products: products,
@@ -151,7 +151,6 @@ export const listProductsWithSort = async ({
     },
     countryCode,
   })
-  console.log(queryParams, 'QURR')
 
   const customer = await retrieveCustomer();
   let customerData = {};
@@ -167,7 +166,6 @@ export const listProductsWithSort = async ({
   const nextPage = count > pageParam + limit ? pageParam + limit : null
 
   const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
-  console.log(paginatedProducts, 'PAGINATED PRODDUCTS', countryCode)
   return {
     response: {
       products: formatProducts(paginatedProducts, customerData),
