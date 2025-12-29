@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useActionState } from "react";
+import React, { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
 
 import Input from "@modules/common/components/input"
-
 import AccountInfo from "../account-info"
 import { HttpTypes } from "@medusajs/types"
 import { updateCustomer } from "@lib/data/customer"
@@ -12,38 +12,40 @@ type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
 }
 
+type ActionState = {
+  success: boolean
+  error: string | null
+}
+
+const initialState: ActionState = {
+  success: false,
+  error: null,
+}
+
 const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
-  const [successState, setSuccessState] = React.useState(false)
+  const [successState, setSuccessState] = useState(false)
 
   const updateCustomerName = async (
-    _currentState: Record<string, unknown>,
+    _prevState: ActionState,
     formData: FormData
-  ) => {
-    const customer = {
-      first_name: formData.get("first_name") as string,
-      last_name: formData.get("last_name") as string,
-    }
-
+  ): Promise<ActionState> => {
     try {
-      await updateCustomer(customer)
+      await updateCustomer({
+        first_name: formData.get("first_name") as string,
+        last_name: formData.get("last_name") as string,
+      })
+
       return { success: true, error: null }
-    } catch (error: any) {
-      return { success: false, error: error.toString() }
+    } catch (err: any) {
+      return { success: false, error: err?.message ?? "Update failed" }
     }
   }
 
-  const [state, formAction] = useActionState(updateCustomerName, {
-    error: false,
-    success: false,
-  })
-
-  const clearState = () => {
-    setSuccessState(false)
-  }
+  const [state, formAction] = useFormState(updateCustomerName, initialState)
 
   useEffect(() => {
-    setSuccessState(state.success)
-  }, [state])
+    if (state.success) setSuccessState(true)
+  }, [state.success])
 
   return (
     <form action={formAction} className="w-full overflow-visible">
@@ -51,8 +53,8 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
         label="Name"
         currentInfo={`${customer.first_name} ${customer.last_name}`}
         isSuccess={successState}
-        isError={!!state?.error}
-        clearState={clearState}
+        isError={!!state.error}
+        clearState={() => setSuccessState(false)}
         data-testid="account-name-editor"
       >
         <div className="grid grid-cols-2 gap-x-4">
@@ -61,14 +63,12 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
             name="first_name"
             required
             defaultValue={customer.first_name ?? ""}
-            data-testid="first-name-input"
           />
           <Input
             label="Last name"
             name="last_name"
             required
             defaultValue={customer.last_name ?? ""}
-            data-testid="last-name-input"
           />
         </div>
       </AccountInfo>

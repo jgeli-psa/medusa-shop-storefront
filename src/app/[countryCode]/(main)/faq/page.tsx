@@ -1,3 +1,4 @@
+import ChatBubble from "@/components/Chat/site-chat-bubble";
 import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
@@ -11,6 +12,7 @@ const ContactPage = () => {
   return (
     <main>
       <Contact />
+      <ChatBubble/>
     </main>
   );
 };

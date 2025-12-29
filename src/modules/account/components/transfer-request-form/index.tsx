@@ -1,20 +1,40 @@
 "use client"
 
-import { useActionState } from "react"
+import { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
+
 import { createTransferRequest } from "@lib/data/orders"
-import { Text, Heading, Input, Button, IconButton, Toaster } from "@medusajs/ui"
+import {
+  Text,
+  Heading,
+  Input,
+  IconButton,
+} from "@medusajs/ui"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { CheckCircleMiniSolid, XCircleSolid } from "@medusajs/icons"
-import { useEffect, useState } from "react"
+
+type ActionState = {
+  success: boolean
+  error: string | null
+  order: {
+    id: string
+    email: string
+  } | null
+}
+
+const initialState: ActionState = {
+  success: false,
+  error: null,
+  order: null,
+}
 
 export default function TransferRequestForm() {
   const [showSuccess, setShowSuccess] = useState(false)
 
-  const [state, formAction] = useActionState(createTransferRequest, {
-    success: false,
-    error: null,
-    order: null,
-  })
+  const [state, formAction] = useFormState(
+    createTransferRequest,
+    initialState
+  )
 
   useEffect(() => {
     if (state.success && state.order) {
@@ -34,12 +54,15 @@ export default function TransferRequestForm() {
             <br /> Connect an order to your account.
           </Text>
         </div>
-        <form
-          action={formAction}
-          className="flex flex-col gap-y-1 sm:items-end"
-        >
+
+        <form action={formAction} className="flex flex-col gap-y-1 sm:items-end">
           <div className="flex flex-col gap-y-2 w-full">
-            <Input className="w-full" name="order_id" placeholder="Order ID" />
+            <Input
+              className="w-full"
+              name="order_id"
+              placeholder="Order ID"
+              required
+            />
             <SubmitButton
               variant="secondary"
               className="w-fit whitespace-nowrap self-end"
@@ -49,21 +72,23 @@ export default function TransferRequestForm() {
           </div>
         </form>
       </div>
+
       {!state.success && state.error && (
         <Text className="text-base-regular text-rose-500 text-right">
           {state.error}
         </Text>
       )}
-      {showSuccess && (
-        <div className="flex justify-between p-4 bg-neutral-50 shadow-borders-base w-full self-stretch items-center">
+
+      {showSuccess && state.order && (
+        <div className="flex justify-between p-4 bg-neutral-50 shadow-borders-base w-full items-center">
           <div className="flex gap-x-2 items-center">
             <CheckCircleMiniSolid className="w-4 h-4 text-emerald-500" />
             <div className="flex flex-col gap-y-1">
-              <Text className="text-medim-pl text-neutral-950">
-                Transfer for order {state.order?.id} requested
+              <Text className="text-medium-plus text-neutral-950">
+                Transfer for order {state.order.id} requested
               </Text>
               <Text className="text-base-regular text-neutral-600">
-                Transfer request email sent to {state.order?.email}
+                Transfer request email sent to {state.order.email}
               </Text>
             </div>
           </div>
