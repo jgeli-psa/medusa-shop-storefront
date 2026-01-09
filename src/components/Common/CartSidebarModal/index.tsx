@@ -12,20 +12,30 @@ import { useDispatch, useSelector } from "react-redux";
 import SingleItem from "./SingleItem";
 import Link from "next/link";
 import EmptyCart from "./EmptyCart";
+import { getCheckoutStep } from "@lib/util/get-checkout-step";
+import { B2BCart } from "@/types/global";
 
 const CartSidebarModal = ({
-  cart: cartState,
+  cart,
 }: {
-  cart?: HttpTypes.StoreCart | null
+  cart: B2BCart
 })  => {
   const dispatch = useDispatch<AppDispatch>();
   const { isCartModalOpen, closeCartModal } = useCartModalContext();
   const [isDeleting, setIsDeleting] = useState(false)
   
-  const cartItems = cartState?.items || [];
+  
+    const checkoutStep = getCheckoutStep(cart)
+
+  
+    const checkoutPath = checkoutStep
+      ? `/checkout?step=${checkoutStep}`
+      : "/checkout"
+  
+  const cartItems = cart?.items || [];
 
 
-  const totalPrice = cartState?.subtotal ?? 0
+  const totalPrice = cart?.subtotal ?? 0
 
 
 
@@ -100,7 +110,7 @@ const CartSidebarModal = ({
                   <SingleItem
                     key={key}
                     item={item}
-                    removeItemFromCart={handleDelete}
+                    // removeItemFromCart={handleDelete}
                   />
                 ))
               ) : (
@@ -108,7 +118,6 @@ const CartSidebarModal = ({
               )}
             </div>
           </div>
-
           <div className="border-t border-gray-3 bg-white pt-5 pb-4 sm:pb-7.5 lg:pb-11 mt-7.5 sticky bottom-0">
             <div className="flex items-center justify-between gap-5 mb-6">
               <p className="font-medium text-xl text-dark">Subtotal:</p>
@@ -126,7 +135,7 @@ const CartSidebarModal = ({
               </Link>
 
               <Link
-                href="/checkout"
+                href={checkoutPath}
                 onClick={() => closeCartModal()}
                 className="w-full flex justify-center font-medium text-white bg-dark py-[13px] px-6 rounded-md ease-out duration-200 hover:bg-opacity-95"
               >

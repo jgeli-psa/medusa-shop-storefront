@@ -19,6 +19,8 @@
     "@headlessui/react": "^2.2.0",
     "@medusajs/js-sdk": "^2.12.2",
     "@medusajs/ui": "^4.0.30",
+    "@paypal/paypal-js": "^9.1.0",
+    "@paypal/react-paypal-js": "^8.9.2",
     "@radix-ui/react-accordion": "^1.2.1",
     "@reduxjs/toolkit": "^2.2.1",
     "@stripe/react-stripe-js": "^5.3.0",

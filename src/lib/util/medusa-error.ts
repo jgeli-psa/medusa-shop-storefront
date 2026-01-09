@@ -1,4 +1,5 @@
-export default function medusaError(error: any): never {
+export default function medusaError(error: any, type?: any): never {
+console.log(error, 'ERRORRRRR', type)
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
@@ -19,4 +20,20 @@ export default function medusaError(error: any): never {
     // Something happened in setting up the request that triggered an Error
     throw new Error("Error setting up the request: " + error.message)
   }
+}
+
+
+export async function medusaErrors(res: Response) {
+  const contentType = res.headers.get("content-type")
+
+  let payload: any
+
+  if (contentType?.includes("application/json")) {
+    payload = await res.json()
+  } else {
+    const text = await res.text()
+    payload = { message: text || res.statusText }
+  }
+
+  throw new Error(payload.message || "Medusa request failed")
 }

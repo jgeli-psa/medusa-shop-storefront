@@ -38,11 +38,11 @@ export interface FormattedProduct {
 export const formatProduct = (product: HttpTypes.StoreProduct | any, customer: any): FormattedProduct => {
   // Get the first variant for pricing
   
-let standard_price = product.metadata['nonmember'] as any;
 const membership = customer?.groups ? customer.groups[0]?.name : "nonmember"  
-let discount_price = product.metadata[membership] as any;
-  const firstVariant = product.variants?.[0] as any;
-  const originalPrice = firstVariant?.prices[0]?.amount || discount_price
+const firstVariant = product.variants?.[0] as any;
+let standard_price = product.metadata ? product.metadata['nonmember'] : firstVariant?.prices[0]?.amount as any;
+let discount_price = product.metadata ? product.metadata[membership] : standard_price as any;
+  const originalPrice = discount_price || firstVariant?.prices[0]?.amount
 
   
   

@@ -4,14 +4,22 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import React from "react";
 import { useSelector } from "react-redux";
 import CartTotals from "../Common/cart-totals";
+import { getCheckoutStep } from "@lib/util/get-checkout-step";
 
 const OrderSummary = ({cart}: any) => {
+  const checkoutStep = getCheckoutStep(cart)
 
   const cartItems = cart.items
   const totalPrice = cart.total;
 
+  const checkoutPath = checkoutStep
+    ? `/checkout?step=${checkoutStep}`
+    : "/checkout"
 
-console.log(cartItems, cart, 'CARTT')
+  // const checkoutButtonLink = customer ? checkoutPath : "/account"
+
+
+
 
   return (
     <div className="lg:max-w-[455px] w-full">
@@ -61,7 +69,7 @@ console.log(cartItems, cart, 'CARTT')
           </div> */}
 
           {/* <!-- checkout button --> */}
-      <LocalizedClientLink href={`/checkout`} >
+      <LocalizedClientLink href={checkoutPath} >
           <button
             className="w-full flex justify-center font-medium text-white bg-blue py-3 px-6 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
           >

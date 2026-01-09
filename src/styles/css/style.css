@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-euclid-circular-a font-normal text-base text-dark-3 relative z-1;
+    /* @apply font-euclid-circular-a font-normal text-base text-dark-3 relative; */
   }
 }
 
@@ -85,7 +85,7 @@ input[type='search']::-webkit-search-results-decoration {
 
 /* Style items (options): */
 .select-items {
-  @apply absolute top-full left-0 right-0 z-99 shadow-2 border border-gray-3 bg-white rounded-md py-2.5 mt-1.5;
+  @apply absolute top-full left-0 right-0 shadow-2 border border-gray-3 bg-white rounded-md py-2.5 mt-1.5;
 }
 
 /* Hide the items when the select box is closed: */

@@ -13,17 +13,14 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation"
 import CartDropdown from "./cart-dropdown";
 
-const Header = ({cart} : any) => {
+const Header = ({cart, customer} : any) => {
   const pathname = usePathname()
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
-  const { openCartModal } = useCartModalContext();
 
-  const product = useAppSelector((state) => state.cartReducer.items);
-  const totalPrice = useSelector(selectTotalPrice);
-
+ 
   // Sticky menu
   const handleStickyMenu = () => {
     if (window.scrollY >= 80) {
@@ -68,6 +65,8 @@ const Header = ({cart} : any) => {
   });
 
 
+
+console.log(customer, cart, 'customerrr')
 
 
 
@@ -173,8 +172,9 @@ const Header = ({cart} : any) => {
                     <span className="block text-2xs text-dark-4 uppercase">
                       account
                     </span>
+                    
                     <p className="font-medium text-custom-sm text-dark">
-                      Sign In
+                        {customer ? customer.first_name + ' ' + customer.last_name : "Sign in"}
                     </p>
                   </div>
                 </Link>

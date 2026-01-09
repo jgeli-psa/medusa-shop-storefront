@@ -56,14 +56,22 @@ const SingleGridItem = ({ item, region }: { item: any, region?: any }) => {
   }, [item.variants])
 
   const selectedVariant = useMemo(() => {
+  // console.log(item, 'ITEMM')
     if (!item.variants || item.variants.length === 0) {
       return
     }
 
-    return item.variants.find((v) => {
+    let variant = item.variants.find((v) => {
       const variantOptions = optionsAsKeymap(v.options)
       return isEqual(variantOptions, options)
-    })
+    });
+    
+    if(variant){
+      return variant
+    } else {
+      return item?.variants[0]
+    }
+    
   }, [item.variants, options])
 
 
@@ -77,6 +85,7 @@ const SingleGridItem = ({ item, region }: { item: any, region?: any }) => {
 
   // add to cart
   const handleAddToCart = async () => {
+  console.log(selectedVariant, 'VARIANT')
       if (!selectedVariant?.id) return null
 
     setIsAdding(true)

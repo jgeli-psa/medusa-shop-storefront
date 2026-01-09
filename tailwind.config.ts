@@ -110,7 +110,7 @@ const config: Config = {
       ...defaultTheme.screens,
     },
     extend: {
-          fontSize: {
+      fontSize: {
         "3xl": "2rem",
         "2xs": ["10px", "17px"],
         "heading-1": ["60px", "72px"],
@@ -234,8 +234,8 @@ const config: Config = {
         99999: "99999",
         9999: "9999",
         999: "999",
-        99: "99",
-        1: "1",
+        // 99: "99",
+        // 1: "1",
       },
       boxShadow: {
         1: "0px 1px 2px 0px rgba(166, 175, 195, 0.25)",
@@ -273,7 +273,7 @@ const config: Config = {
           80: "#1F2937",
           90: "#111827",
         },
-      },
+       },
       borderRadius: {
         none: "0px",
         soft: "2px",
@@ -362,12 +362,12 @@ const config: Config = {
           },
         },
         enter: {
-          "0%": { transform: "scale(0.9)", opacity: 0 },
-          "100%": { transform: "scale(1)", opacity: 1 },
+          "0%": { transform: "scale(0.9)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
         leave: {
-          "0%": { transform: "scale(1)", opacity: 1 },
-          "100%": { transform: "scale(0.9)", opacity: 0 },
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "100%": { transform: "scale(0.9)", opacity: "0" },
         },
         "slide-in": {
           "0%": { transform: "translateY(-100%)" },

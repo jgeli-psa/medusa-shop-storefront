@@ -7,6 +7,7 @@ import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import {
   getAuthHeaders,
+  getCacheHeaders,
   getCacheOptions,
   getCacheTag,
   getCartId,
@@ -14,12 +15,43 @@ import {
   setCartId,
 } from "./cookies"
 import { getRegion } from "./regions"
+import { B2BCart } from "@/types/global"
 
 /**
  * Retrieves a cart by its ID. If no ID is provided, it will use the cart ID from the cookies.
  * @param cartId - optional - The ID of the cart to retrieve.
  * @returns The cart object if found, or null if not found.
  */
+// export async function retrieveCart(cartId?: string, fields?: string) {
+//   const id = cartId || (await getCartId())
+//   fields ??= "*items, *region, *items.product, *items.variant, *items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name"
+
+//   if (!id) {
+//     return null
+//   }
+
+//   const headers = {
+//     ...(await getAuthHeaders()),
+//   }
+
+//   const next = {
+//     ...(await getCacheOptions("carts")),
+//   }
+
+//   return await sdk.client
+//     .fetch<HttpTypes.StoreCartResponse>(`/store/carts/${id}`, {
+//       method: "GET",
+//       query: {
+//         fields
+//       },
+//       headers,
+//       next,
+//       cache: "force-cache",
+//     })
+//     .then(({ cart }: { cart: HttpTypes.StoreCart }) => cart)
+//     .catch(() => null)
+// }
+
 export async function retrieveCart(cartId?: string, fields?: string) {
   const id = cartId || (await getCartId())
   fields ??= "*items, *region, *items.product, *items.variant, *items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name"
@@ -46,8 +78,14 @@ export async function retrieveCart(cartId?: string, fields?: string) {
       next,
       cache: "force-cache",
     })
-    .then(({ cart }: { cart: HttpTypes.StoreCart }) => cart)
-    .catch(() => null)
+    .then(({ cart }) => {
+      return cart as B2BCart & {
+        promotions?: HttpTypes.StorePromotion[]
+      }
+    })
+    .catch(() => {
+      return null
+    })
 }
 
 export async function clearCart(cartId?: string, fields?: string) {
@@ -411,6 +449,7 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
         phone: formData.get("shipping_address.phone"),
       },
       email: formData.get("email"),
+      metadata: { order_notes: formData.get("order_notes") }
     } as any
 
     const sameAsBilling = formData.get("same_as_billing")
@@ -437,6 +476,39 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
   redirect(
     `/${formData.get("shipping_address.country_code")}/checkout?step=delivery`
   )
+}
+
+export async function setBillingAddress(
+  currentState: unknown,
+  formData: FormData
+) {
+  try {
+    const cartId = getCartId()
+    if (!cartId) {
+      throw new Error("No existing cart found when setting billing address")
+    }
+
+    const data = {
+      billing_address: {
+        first_name: formData.get("billing_address.first_name"),
+        last_name: formData.get("billing_address.last_name"),
+        address_1: formData.get("billing_address.address_1"),
+        address_2: "",
+        company: formData.get("billing_address.company"),
+        postal_code: formData.get("billing_address.postal_code"),
+        city: formData.get("billing_address.city"),
+        country_code: formData.get("billing_address.country_code"),
+        province: formData.get("billing_address.province"),
+        phone: formData.get("billing_address.phone"),
+      },
+    } as any
+
+    await updateCart(data)
+  } catch (e: any) {
+    return e.message
+  }
+
+  redirect(`/checkout?step=delivery`)
 }
 
 /**

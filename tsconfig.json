@@ -21,7 +21,9 @@
       "@pages/*": ["pages/*"],
        "@/*": [
         "./*"
-      ]
+      ],
+      "@starter/types": ["types"],
+      "@starter/types/*": ["types/*"]
     },
     "plugins": [
       {

@@ -33,6 +33,22 @@ export const getCacheTag = async (tag: string): Promise<string> => {
   }
 }
 
+export const getCacheHeaders = (
+  tag: string
+): { next: { tags: string[] } } | {} => {
+  if (typeof window !== "undefined") {
+    return {}
+  }
+
+  const cacheTag = getCacheTag(tag)
+
+  if (cacheTag) {
+    return { next: { tags: [`${cacheTag}`] } }
+  }
+
+  return {}
+}
+
 export const getCacheOptions = async (
   tag: string
 ): Promise<{ tags: string[] } | {}> => {

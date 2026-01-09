@@ -7,6 +7,7 @@ import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import {
   getAuthHeaders,
+  getCacheHeaders,
   getCacheOptions,
   getCacheTag,
   getCartId,
@@ -14,6 +15,24 @@ import {
   removeCartId,
   setAuthToken,
 } from "./cookies"
+import { cache } from "react"
+import { B2BCustomer } from "types/global"
+
+
+
+export const getCustomer = cache(
+  async function (): Promise<B2BCustomer | null> {
+    return await sdk.store.customer
+      .retrieve(
+        {
+          fields: "+orders.*",
+        },
+        { ...(await getCacheHeaders("customers")), ...(await getAuthHeaders()) }
+      )
+      .then(({ customer }) => customer as B2BCustomer)
+      .catch(() => null)
+  }
+)
 
 export const retrieveCustomer =
   async (): Promise<any | null> => {
@@ -48,7 +67,7 @@ export const retrieveCustomer =
       
     let customerData = await retrieveCustomerById(authCustomer?.id) 
       console.log(customerData, 'cust d')
-    customer = {...authCustomer, membership: customerData.groups[0] ? customerData.groups[0].name : 'nonmember' }  
+    customer = {...authCustomer, membership: customerData?.groups[0] ? customerData?.groups[0].name : 'nonmember' }  
       console.log(customer, 'cuss')
     return customer;
       
@@ -84,7 +103,7 @@ export const retrieveCustomerById =
       .catch((e) => console.log(e, 'ERR'))
       
       
-      customerData = {...authCustomer, membership: authCustomer.groups[0] ? authCustomer.groups[0].name : 'nonmember'}
+      customerData = {...authCustomer, membership: authCustomer?.groups[0] ? authCustomer?.groups[0].name : 'nonmember'}
       
       return customerData
   }
@@ -156,6 +175,28 @@ export async function login(formData: FormData) {
 
   try {
     const token = await sdk.auth.login("customer", "emailpass", { email, password })
+    await setAuthToken(token as string)
+
+    const customerCacheTag = await getCacheTag("customers")
+    revalidateTag(customerCacheTag)
+
+    try {
+      await transferCart()
+    } catch (cartError: any) {
+      console.error("Cart transfer failed:", cartError)
+      // Optionally: don't throw, just log
+    }
+
+    return { success: true }
+  } catch (error: any) {
+    // Throw the error so the calling component can catch it
+    throw new Error(error?.message || "Login failed")
+  }
+}
+
+export async function authUser(token: any) {
+
+  try {
     await setAuthToken(token as string)
 
     const customerCacheTag = await getCacheTag("customers")

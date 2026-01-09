@@ -23,6 +23,8 @@ export default async function Addresses(props: {
     notFound()
   }
 
+
+console.log(countryCode, 'country')
   return (
     <div className="w-full" data-testid="addresses-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
@@ -32,7 +34,7 @@ export default async function Addresses(props: {
           like. Saving your addresses will make them available during checkout.
         </p>
       </div>
-      <AddressBook customer={customer} region={region} />
+      <AddressBook customer={customer} region={region} countryCode={countryCode} />
     </div>
   )
 }

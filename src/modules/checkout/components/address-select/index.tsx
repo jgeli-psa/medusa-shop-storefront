@@ -81,6 +81,11 @@ const AddressSelect = ({
                       <span className="text-left text-base-semi">
                         {address.first_name} {address.last_name}
                       </span>
+                      {address.email && (
+                        <span className="text-small-regular text-ui-fg-base">
+                          {address.email}
+                        </span>
+                      )}
                       {address.company && (
                         <span className="text-small-regular text-ui-fg-base">
                           {address.company}

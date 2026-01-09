@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState, useActionState } from "react"
+import React, { useEffect, useState } from "react"
 import { PencilSquare as Edit, Trash } from "@medusajs/icons"
 import { Button, Heading, Text, clx } from "@medusajs/ui"
 
@@ -15,45 +15,26 @@ import {
   deleteCustomerAddress,
   updateCustomerAddress,
 } from "@lib/data/customer"
+import StateSelect from "@modules/checkout/components/state-select"
 
 type EditAddressProps = {
   region: HttpTypes.StoreRegion
   address: HttpTypes.StoreCustomerAddress
   isActive?: boolean
+  countryCode?: any
 }
 
 const EditAddress: React.FC<EditAddressProps> = ({
   region,
   address,
   isActive = false,
+  countryCode
 }) => {
+  const { state, open, close } = useToggleState(false)
+
   const [removing, setRemoving] = useState(false)
-  const [successState, setSuccessState] = useState(false)
-  const { state, open, close: closeModal } = useToggleState(false)
-
-  const [formState, formAction] = useActionState(updateCustomerAddress, {
-    success: false,
-    error: null,
-    addressId: address.id,
-  })
-
-  const close = () => {
-    setSuccessState(false)
-    closeModal()
-  }
-
-  useEffect(() => {
-    if (successState) {
-      close()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [successState])
-
-  useEffect(() => {
-    if (formState.success) {
-      setSuccessState(true)
-    }
-  }, [formState])
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const removeAddress = async () => {
     setRemoving(true)
@@ -61,173 +42,179 @@ const EditAddress: React.FC<EditAddressProps> = ({
     setRemoving(false)
   }
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError(null)
+
+    try {
+      const formData = new FormData(e.currentTarget)
+        const data = Object.fromEntries(formData.entries())
+      await updateCustomerAddress(data, formData)
+      close()
+    } catch (err: any) {
+      setError(err?.message || "Failed to update address")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+
+console.log(region, 'REG', address)
   return (
     <>
+      {/* Address Card */}
       <div
         className={clx(
-          "border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors",
-          {
-            "border-gray-900": isActive,
-          }
+          "border rounded-rounded p-5 min-h-[220px] flex flex-col justify-between",
+          { "border-gray-900": isActive }
         )}
-        data-testid="address-container"
       >
-        <div className="flex flex-col">
-          <Heading
-            className="text-left text-base-semi"
-            data-testid="address-name"
-          >
+        <div>
+          <Heading className="text-base-semi">
             {address.first_name} {address.last_name}
           </Heading>
+
           {address.company && (
-            <Text
-              className="txt-compact-small text-ui-fg-base"
-              data-testid="address-company"
-            >
-              {address.company}
-            </Text>
+            <Text className="text-ui-fg-base">{address.company}</Text>
           )}
-          <Text className="flex flex-col text-left text-base-regular mt-2">
-            <span data-testid="address-address">
-              {address.address_1}
-              {address.address_2 && <span>, {address.address_2}</span>}
-            </span>
-            <span data-testid="address-postal-city">
-              {address.postal_code}, {address.city}
-            </span>
-            <span data-testid="address-province-country">
-              {address.province && `${address.province}, `}
-              {address.country_code?.toUpperCase()}
-            </span>
+
+          <Text className="mt-2">
+            {address.address_1}
+            {address.address_2 && `, ${address.address_2}`}
+            <br />
+            {address.postal_code}, {address.city}
+            <br />
+            {address.province && `${address.province}, `}
+            {address.country_code?.toUpperCase()}
           </Text>
         </div>
-        <div className="flex items-center gap-x-4">
-          <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
-            onClick={open}
-            data-testid="address-edit-button"
-          >
-            <Edit />
-            Edit
+
+        <div className="flex gap-x-4 mt-4">
+          <button onClick={open} className="flex items-center gap-2">
+            <Edit /> Edit
           </button>
-          <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
-            onClick={removeAddress}
-            data-testid="address-delete-button"
-          >
+          <button onClick={removeAddress} className="flex items-center gap-2">
             {removing ? <Spinner /> : <Trash />}
             Remove
           </button>
         </div>
       </div>
 
-      <Modal isOpen={state} close={close} data-testid="edit-address-modal">
+      {/* Modal */}
+      <Modal isOpen={state} close={close}>
         <Modal.Title>
-          <Heading className="mb-2">Edit address</Heading>
+          <Heading>Edit address</Heading>
         </Modal.Title>
-        <form action={formAction}>
+
+        <form onSubmit={handleSubmit}>
           <input type="hidden" name="addressId" value={address.id} />
-          <Modal.Body>
-            <div className="grid grid-cols-1 gap-y-2">
-              <div className="grid grid-cols-2 gap-x-2">
-                <Input
-                  label="First name"
-                  name="first_name"
-                  required
-                  autoComplete="given-name"
-                  defaultValue={address.first_name || undefined}
-                  data-testid="first-name-input"
-                />
-                <Input
-                  label="Last name"
-                  name="last_name"
-                  required
-                  autoComplete="family-name"
-                  defaultValue={address.last_name || undefined}
-                  data-testid="last-name-input"
-                />
-              </div>
-              <Input
-                label="Company"
-                name="company"
-                autoComplete="organization"
-                defaultValue={address.company || undefined}
-                data-testid="company-input"
-              />
-              <Input
-                label="Address"
-                name="address_1"
-                required
-                autoComplete="address-line1"
-                defaultValue={address.address_1 || undefined}
-                data-testid="address-1-input"
-              />
-              <Input
-                label="Apartment, suite, etc."
-                name="address_2"
-                autoComplete="address-line2"
-                defaultValue={address.address_2 || undefined}
-                data-testid="address-2-input"
-              />
-              <div className="grid grid-cols-[144px_1fr] gap-x-2">
-                <Input
-                  label="Postal code"
-                  name="postal_code"
-                  required
-                  autoComplete="postal-code"
-                  defaultValue={address.postal_code || undefined}
-                  data-testid="postal-code-input"
-                />
-                <Input
-                  label="City"
-                  name="city"
-                  required
-                  autoComplete="locality"
-                  defaultValue={address.city || undefined}
-                  data-testid="city-input"
-                />
-              </div>
-              <Input
-                label="Province / State"
-                name="province"
-                autoComplete="address-level1"
-                defaultValue={address.province || undefined}
-                data-testid="state-input"
-              />
-              <CountrySelect
-                name="country_code"
-                region={region}
-                required
-                autoComplete="country"
-                defaultValue={address.country_code || undefined}
-                data-testid="country-select"
-              />
-              <Input
-                label="Phone"
-                name="phone"
-                autoComplete="phone"
-                defaultValue={address.phone || undefined}
-                data-testid="phone-input"
-              />
-            </div>
-            {formState.error && (
-              <div className="text-rose-500 text-small-regular py-2">
-                {formState.error}
-              </div>
-            )}
-          </Modal.Body>
+
+  <input type="hidden" name="addressId" value={address.id} />
+
+  <Modal.Body>
+    <div className="grid gap-3">
+
+
+      {/* NAME */}
+      <div className="grid grid-cols-2 gap-2">
+        <Input
+          label="First name"
+          name="first_name"
+          required
+          defaultValue={address.first_name ?? ""}
+        />
+        <Input
+          label="Last name"
+          name="last_name"
+          required
+          defaultValue={address.last_name ?? ""}
+        />
+      </div>
+
+      {/* COMPANY */}
+      <Input
+        label="Company"
+        name="company"
+        defaultValue={address.company ?? ""}
+      />
+
+      {/* ADDRESS */}
+      <Input
+        label="Address"
+        name="address_1"
+        required
+        defaultValue={address.address_1 ?? ""}
+      />
+
+      <Input
+        label="Apartment, suite, etc."
+        name="address_2"
+        defaultValue={address.address_2 ?? ""}
+      />
+
+      {/* POSTCODE + CITY */}
+      <div className="grid grid-cols-[140px_1fr] gap-2">
+        <Input
+          label="Postal code"
+          name="postal_code"
+          required
+          defaultValue={address.postal_code ?? ""}
+        />
+        <Input
+          label="City"
+          name="city"
+          required
+          defaultValue={address.city ?? ""}
+        />
+      </div>
+
+      {/* COUNTRY */}
+      <CountrySelect
+        name="country_code"
+        region={region}
+        defaultValue={countryCode ?? ""}
+        // onChange={(e) => setCountryCode(e.target.value)}
+        required
+      />
+
+      {/* STATE / TERRITORY */}
+      <StateSelect
+        name="province"
+        region={region}
+        countryCode={countryCode}
+        defaultValue={address.province ?? ""}
+        required
+        onInvalidValue={() => {
+          const el = document.querySelector(
+            'select[name="province"]'
+          ) as HTMLSelectElement | null
+          if (el) el.value = ""
+        }}
+      />
+
+      {/* PHONE */}
+      <Input
+        label="Phone"
+        name="phone"
+        autoComplete="tel"
+        defaultValue={address.phone ?? ""}
+      />
+    </div>
+
+    {error && (
+      <p className="text-rose-500 text-small-regular mt-2">
+        {error}
+      </p>
+    )}
+  </Modal.Body>
+
           <Modal.Footer>
-            <div className="flex gap-3 mt-6">
-              <Button
-                type="reset"
-                variant="secondary"
-                onClick={close}
-                className="h-10"
-                data-testid="cancel-button"
-              >
+            <div className="flex gap-3">
+              <Button variant="secondary" type="button" onClick={close}>
                 Cancel
               </Button>
-              <SubmitButton data-testid="save-button">Save</SubmitButton>
+              <SubmitButton isLoading={isSubmitting}>Save</SubmitButton>
             </div>
           </Modal.Footer>
         </form>

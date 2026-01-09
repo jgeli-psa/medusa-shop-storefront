@@ -1,17 +1,19 @@
 "use client"
 
 import { RadioGroup } from "@headlessui/react"
-import { isStripeLike, paymentInfoMap } from "@lib/constants"
+import { isStripe as isStripeFunc, paymentInfoMap, isStripeLike } from "@lib/constants"
 import { initiatePaymentSession } from "@lib/data/cart"
 import { CheckCircleSolid, CreditCard } from "@medusajs/icons"
 import { Button, Container, Heading, Text, clx } from "@medusajs/ui"
 import ErrorMessage from "@modules/checkout/components/error-message"
-import PaymentContainer, {
-  StripeCardContainer,
-} from "@modules/checkout/components/payment-container"
+import PaymentContainer, { StripeCardContainer } from "@modules/checkout/components/payment-container"
+import { StripeContext } from "@modules/checkout/components/payment-wrapper"
+// import Button from "@modules/common/components/button"
 import Divider from "@modules/common/components/divider"
+import { CardElement } from "@stripe/react-stripe-js"
+import { StripeCardElementOptions } from "@stripe/stripe-js"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useMemo, useState } from "react"
 
 const Payment = ({
   cart,
@@ -38,21 +40,44 @@ const Payment = ({
 
   const isOpen = searchParams.get("step") === "payment"
 
-  const setPaymentMethod = async (method: string) => {
-    setError(null)
-    setSelectedPaymentMethod(method)
-    if (isStripeLike(method)) {
-      await initiatePaymentSession(cart, {
-        provider_id: method,
-      })
-    }
-  }
+  const isStripe = isStripeFunc(activeSession?.provider_id)
+  const stripeReady = useContext(StripeContext)
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
 
   const paymentReady =
     (activeSession && cart?.shipping_methods.length !== 0) || paidByGiftcard
+
+  const useOptions: StripeCardElementOptions = useMemo(() => {
+    return {
+      style: {
+        base: {
+          fontFamily: "Inter, sans-serif",
+          color: "#424270",
+          "::placeholder": {
+            color: "rgb(107 114 128)",
+          },
+        },
+      },
+      classes: {
+        base: "pt-3 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover transition-all duration-300 ease-in-out",
+      },
+    }
+  }, [])
+  
+  
+    const setPaymentMethod = async (method: string) => {
+      setError(null)
+      setSelectedPaymentMethod(method)
+      if (isStripeLike(method)) {
+        await initiatePaymentSession(cart, {
+          provider_id: method,
+        })
+      }
+    }
+  
+  
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -74,12 +99,12 @@ const Payment = ({
     setIsLoading(true)
     try {
       const shouldInputCard =
-        isStripeLike(selectedPaymentMethod) && !activeSession
+        isStripeFunc(selectedPaymentMethod) && !activeSession
 
-      const checkActiveSession =
-        activeSession?.provider_id === selectedPaymentMethod
-
-      if (!checkActiveSession) {
+      if (
+        !activeSession ||
+        activeSession.provider_id !== selectedPaymentMethod
+      ) {
         await initiatePaymentSession(cart, {
           provider_id: selectedPaymentMethod,
         })
@@ -104,35 +129,37 @@ const Payment = ({
     setError(null)
   }, [isOpen])
 
+
+
   return (
-    <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
-        <Heading
-          level="h2"
-          className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
-            {
+    <Container>
+      <div className="flex flex-col gap-y-2">
+        <div className="flex flex-row items-center justify-between w-full">
+          <Heading
+            level="h2"
+            className={clx("flex flex-row text-xl gap-x-2 items-center", {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
-            }
+            })}
+          >
+            Payment Method
+            {!isOpen && paymentReady && <CheckCircleSolid />}
+          </Heading>
+          {!isOpen && paymentReady && (
+            <Text>
+              <button
+                onClick={handleEdit}
+                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+                data-testid="edit-payment-button"
+              >
+                Edit
+              </button>
+            </Text>
           )}
-        >
-          Payment
-          {!isOpen && paymentReady && <CheckCircleSolid />}
-        </Heading>
-        {!isOpen && paymentReady && (
-          <Text>
-            <button
-              onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
-              data-testid="edit-payment-button"
-            >
-              Edit
-            </button>
-          </Text>
-        )}
+        </div>
+        {(isOpen || (cart && paymentReady && activeSession)) && <Divider />}
       </div>
-      <div>
+    <div>
         <div className={isOpen ? "block" : "hidden"}>
           {!paidByGiftcard && availablePaymentMethods?.length && (
             <>
@@ -186,6 +213,7 @@ const Payment = ({
           <Button
             size="large"
             className="mt-6"
+            variant="primary"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
@@ -194,9 +222,9 @@ const Payment = ({
             }
             data-testid="submit-payment-button"
           >
-            {!activeSession && isStripeLike(selectedPaymentMethod)
-              ? " Enter card details"
-              : "Continue to review"}
+    {!activeSession && isStripeFunc(selectedPaymentMethod)
+                ? " Enter card details"
+                : "Continue to review"}
           </Button>
         </div>
 
@@ -251,8 +279,7 @@ const Payment = ({
           ) : null}
         </div>
       </div>
-      <Divider className="mt-8" />
-    </div>
+    </Container>
   )
 }
 

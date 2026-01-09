@@ -1,4 +1,6 @@
-import { StorePrice } from "@medusajs/types"
+import { StorePrice, HttpTypes } from "@medusajs/types"
+import { QueryCompany, QueryEmployee } from "../types"
+
 
 export type FeaturedProduct = {
   id: string
@@ -21,4 +23,22 @@ export type StoreFreeShippingPrice = StorePrice & {
   target_reached: boolean
   target_remaining: number
   remaining_percentage: number
+}
+
+
+export enum SpendingLimitResetFrequency {
+  never = "never",
+  daily = "daily",
+  weekly = "weekly",
+  monthly = "monthly",
+  yearly = "yearly",
+}
+
+export interface B2BCart extends HttpTypes.StoreCart {
+  company: QueryCompany
+}
+
+export interface B2BCustomer extends HttpTypes.StoreCustomer {
+  employee: QueryEmployee | null
+  orders?: HttpTypes.StoreOrder[]
 }

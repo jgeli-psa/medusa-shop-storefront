@@ -1,7 +1,7 @@
 "use client"
 
 import { loadStripe } from "@stripe/stripe-js"
-import React from "react"
+import React, { createContext } from "react"
 import StripeWrapper from "./stripe-wrapper"
 import { HttpTypes } from "@medusajs/types"
 import { isStripeLike } from "@lib/constants"
@@ -22,6 +22,9 @@ const stripePromise = stripeKey
       medusaAccountId ? { stripeAccount: medusaAccountId } : undefined
     )
   : null
+  
+  export const StripeContext = createContext(false)
+  
 
 const PaymentWrapper: React.FC<PaymentWrapperProps> = ({ cart, children }) => {
   const paymentSession = cart.payment_collection?.payment_sessions?.find(
@@ -44,7 +47,7 @@ const PaymentWrapper: React.FC<PaymentWrapperProps> = ({ cart, children }) => {
     )
   }
 
-  return <div>{children}</div>
+  return <>{children}</>
 }
 
 export default PaymentWrapper

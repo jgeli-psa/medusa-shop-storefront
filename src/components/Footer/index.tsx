@@ -7,6 +7,9 @@ const Footer = async () => {
   const year = new Date().getFullYear();
   let store = await retrieveStore() as any;
 
+
+console.log(store, 'STORE')
+
   return (
     <footer className="overflow-hidden">
       <div className="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">

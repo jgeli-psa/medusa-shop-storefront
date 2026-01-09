@@ -59,6 +59,7 @@ const StripePaymentButton = ({
   const onPaymentCompleted = async () => {
     await placeOrder()
       .catch((err) => {
+        setSubmitting(false)
         setErrorMessage(err.message)
       })
       .finally(() => {
@@ -75,7 +76,7 @@ const StripePaymentButton = ({
   )
 
   const disabled = !stripe || !elements ? true : false
-
+console.log(stripe, elements, 'stripppy', submitting, notReady)
   const handlePayment = async () => {
     setSubmitting(true)
 
@@ -116,7 +117,8 @@ const StripePaymentButton = ({
           ) {
             onPaymentCompleted()
           }
-
+         
+          setSubmitting(false)
           setErrorMessage(error.message || null)
           return
         }
@@ -129,6 +131,8 @@ const StripePaymentButton = ({
         }
 
         return
+      }).finally(() => {
+                setSubmitting(false)
       })
   }
 
@@ -140,6 +144,7 @@ const StripePaymentButton = ({
         size="large"
         isLoading={submitting}
         data-testid={dataTestId}
+        variant={(disabled || notReady)  ? "secondary" : "primary"} 
       >
         Place order
       </Button>
@@ -170,6 +175,9 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
 
     onPaymentCompleted()
   }
+
+
+console.log(submitting, 'subbmitt')
 
   return (
     <>

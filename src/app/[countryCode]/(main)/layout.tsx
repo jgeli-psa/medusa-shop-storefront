@@ -1,4 +1,6 @@
 import { Metadata } from "next"
+import "styles/css/euclid-circular-a-font.css";
+import "styles/css/style.css";
 
 import { listCartOptions, retrieveCart } from "@lib/data/cart"
 import { retrieveCustomer } from "@lib/data/customer"
@@ -11,6 +13,8 @@ import QuickViewModal from "@/components/Common/QuickViewModal";
 import CartSidebarModal from "@/components/Common/CartSidebarModal";
 import PreviewSliderModal from "@/components/Common/PreviewSlider";
 import Footer from "@/components/Footer"
+
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
