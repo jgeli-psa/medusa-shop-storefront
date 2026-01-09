@@ -1,23 +1,27 @@
 "use client"
 
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
-import ErrorMessage from "@modules/checkout/components/error-message"
+import { useEffect, useState } from "react"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
-import Input from "@modules/common/components/input"
+import { authUser } from "@lib/data/customer"
 
-export default function LoginPage() {
+export default function LoginPage({ setCurrentView }: any) {
   const router = useRouter()
   const searchParams = useSearchParams() // ✅ Next.js 13 App Router way
+  const token = searchParams.get("token")
+  const [loading, setLoading] = useState(true);
 
   // Handle redirect with token from Medusa callback
   useEffect(() => {
-    const token = searchParams.get("token")
     if (token) {
+      setLoading(true)
       // Store JWT
       localStorage.setItem("medusa_token", token)
+      authUser(token)
       // Redirect to home or dashboard
       router.replace("/")
+    } else {
+      setLoading(false)
     }
   }, [searchParams, router])
 
@@ -58,8 +62,28 @@ export default function LoginPage() {
     window.location.href = `https://test.salesforce.com/services/oauth2/authorize?${params.toString()}`
   }
 
+  if(loading) return (
+   <div className="flex min-h-fit items-center justify-center bg-gray-50">
+      <div className="rounded-lg bg-white p-6 shadow-md">
+        <h1 className="text-xl font-semibold mb-2">
+          Signing you in…
+        </h1>
+        <p className="text-gray-600">
+          Please wait while we complete your login.
+        </p>
+      </div>
+    </div>
+  );
+  
   return (
   <>
+      <div className="max-w-sm w-full flex flex-col items-center" data-testid="login-page">
+      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
+      <p className="text-center text-base-regular text-ui-fg-base mb-8">
+        Sign in to access an enhanced shopping experience.
+      </p>
+
+  
         <form className="w-full" onSubmit={loginWithSalesforce}>
     {/*     <div className="flex flex-col w-full gap-y-2">
           <Input
@@ -95,6 +119,7 @@ export default function LoginPage() {
         Login with Salesforce
       </button>
     </div> */}
+    </div>
   </>
     
   )

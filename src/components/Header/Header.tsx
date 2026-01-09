@@ -10,16 +10,22 @@ import { useSelector } from "react-redux";
 import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useCartModalContext } from "@/lib/context/CartSidebarModalContext";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import CartDropdown from "./cart-dropdown";
+import { authUser } from "@lib/data/customer";
 
 const Header = ({cart, customer} : any) => {
   const pathname = usePathname()
   const router = useRouter()
+  const searchParams = useSearchParams() // ✅ Next.js 13 App Router way
   const [searchQuery, setSearchQuery] = useState("");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
 
+
+ 
+ 
+ 
  
   // Sticky menu
   const handleStickyMenu = () => {
@@ -64,9 +70,6 @@ const Header = ({cart, customer} : any) => {
     window.addEventListener("scroll", handleStickyMenu);
   });
 
-
-
-console.log(customer, cart, 'customerrr')
 
 
 
