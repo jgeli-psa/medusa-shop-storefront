@@ -23,7 +23,7 @@ export default function SalesforceAuthPage() {
      <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <div className="rounded-lg bg-white p-6 shadow-md">
         <h1 className="text-xl font-semibold mb-2">
-          Signing you in…
+          Signing you in… 
         </h1>
         <p className="text-gray-600">
           Please wait while we complete your login.
