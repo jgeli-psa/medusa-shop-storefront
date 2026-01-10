@@ -47,19 +47,21 @@ export default function LoginPage({ setCurrentView }: any) {
     const code_challenge = base64String
 
     // 3️⃣ Set code_verifier in cookie (for Medusa callback)
-    document.cookie = `sf_code_verifier=${code_verifier}; path=/; samesite=lax`
+    // document.cookie = `sf_code_verifier=${code_verifier}; path=/; samesite=lax`
 
-    // 4️⃣ Redirect to Salesforce authorize endpoint
-    const params = new URLSearchParams({
-      response_type: "code",
-      client_id: process.env.NEXT_PUBLIC_SF_CLIENT_ID!,
-      redirect_uri: process.env.NEXT_PUBLIC_SF_REDIRECT_URI!,
-      scope: "openid email profile",
-      code_challenge,
-      code_challenge_method: "S256",
-    })
+    // // 4️⃣ Redirect to Salesforce authorize endpoint
+    // const params = new URLSearchParams({
+    //   response_type: "code",
+    //   client_id: process.env.NEXT_PUBLIC_SF_CLIENT_ID!,
+    //   redirect_uri: process.env.NEXT_PUBLIC_SF_REDIRECT_URI!,
+    //   scope: "openid email profile",
+    //   code_challenge,
+    //   code_challenge_method: "S256",
+    // })
 
-    window.location.href = `https://test.salesforce.com/services/oauth2/authorize?${params.toString()}`
+    // window.location.href = `https://test.salesforce.com/services/oauth2/authorize?${params.toString()}`
+    window.location.href =
+    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/auth/salesforce/start`
   }
 
   if(loading) return (
