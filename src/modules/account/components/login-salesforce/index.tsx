@@ -29,7 +29,7 @@ export default function LoginPage({ setCurrentView }: any) {
   const loginWithSalesforce = async (e) => {
   e.preventDefault( )
     // 1️⃣ Generate code_verifier
-    const array = new Uint8Array(32)
+ /*    const array = new Uint8Array(32)
     window.crypto.getRandomValues(array)
     const code_verifier = Array.from(array, (dec) =>
       ("0" + dec.toString(16)).slice(-2)
@@ -44,7 +44,7 @@ export default function LoginPage({ setCurrentView }: any) {
       .replace(/\+/g, "-")
       .replace(/\//g, "_")
       .replace(/=+$/, "")
-    const code_challenge = base64String
+    const code_challenge = base64String */
 
     // 3️⃣ Set code_verifier in cookie (for Medusa callback)
     // document.cookie = `sf_code_verifier=${code_verifier}; path=/; samesite=lax`
@@ -61,7 +61,7 @@ export default function LoginPage({ setCurrentView }: any) {
 
     // window.location.href = `https://test.salesforce.com/services/oauth2/authorize?${params.toString()}`
     window.location.href =
-    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/auth/salesforce/start`
+    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/auth/salesforce/start?redirect_to=/account`
   }
 
   if(loading) return (
